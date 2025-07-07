@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Error Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Error Page for Startup Nextjs Template",
+  title: "AD Missão Jardim América - Goiânia",
+  description: "Site da Assembleia de Deus Ministério Missão Jardim América em Goiânia - Goiás",
   // other metadata
 };
 
