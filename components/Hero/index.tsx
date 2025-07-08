@@ -1,16 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const images = [
-  'https://picsum.photos/id/1018/1000/600/',
-  'https://picsum.photos/id/1015/1000/600/',
-  'https://picsum.photos/id/1019/1000/600/',
+  '/images/hero/igreja01.jpeg',
+  '/images/hero/igreja02.jpeg',
+  '/images/hero/igreja03.jpeg',
 ];
 
 const Hero = () => {
@@ -62,8 +62,7 @@ const Hero = () => {
           effect={'fade'}
           autoplay={{ delay: 3500, disableOnInteraction: false }}
           loop={true}
-          modules={[Autoplay, Navigation, Pagination]}
-          navigation
+          modules={[Autoplay, Pagination]}
           pagination={{ clickable: true }}
           className="h-full w-full"
         >
