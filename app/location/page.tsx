@@ -1,5 +1,5 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import Contact from "@/components/Contact";
+import Location from "@/components/Location";
 
 import { Metadata } from "next";
 import MapaPage from "../mapa/page";
@@ -19,7 +19,7 @@ const ContactPage = () => {
       />
       <MapaPage />
 
-      <Contact />
+      <Location />
     </>
   );
 };

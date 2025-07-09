@@ -22,7 +22,7 @@ const menuData: Menu[] = [
   {
     id: 3,
     title: "Como chegar",
-    path: "/contact",
+    path: "/location",
     newTab: false,
   },
   {
@@ -38,8 +38,8 @@ const menuData: Menu[] = [
       },
       {
         id: 42,
-        title: "Contact Page",
-        path: "/contact",
+        title: "Como chegar",
+        path: "/location",
         newTab: false,
       },
       {
