@@ -5,7 +5,7 @@ import { useCallback, useMemo, useState } from 'react';
 
 const MapaPage = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'AIzaSyANPuVxL2S1QKar8lsMXC4F-3g1DjHObyw', // Defina a API Key no .env
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
   });
 
   const center = useMemo(() => ({
@@ -13,11 +13,12 @@ const MapaPage = () => {
     lng: -49.2648,
   }), []);
 
+  // Defina o ícone de cada filial
   const filialLocations = [
-    { id: 1, nome: 'Filial Centro', lat: -16.6785, lng: -49.2531 },
-    { id: 2, nome: 'Filial Bueno', lat: -16.7047, lng: -49.2637 },
-    { id: 3, nome: 'Filial Norte', lat: -16.6500, lng: -49.2500 },
-    { id: 4, nome: 'Filial Sul', lat: -16.7200, lng: -49.2900 },
+    { id: 1, nome: 'Sede AD Missão Jardim América', lat: -16.7195, lng: -49.2906, icon: '/images/point.png' },
+    { id: 2, nome: 'Filial Bueno', lat: -16.7047, lng: -49.2637, icon: '/images/point.png' },
+    { id: 3, nome: 'Filial Norte', lat: -16.6500, lng: -49.2500, icon: '/images/point.png' },
+    { id: 4, nome: 'Filial Sul', lat: -16.7200, lng: -49.2900, icon: '/images/point.png' },
   ];
 
   const [selectedFilial, setSelectedFilial] = useState<number | null>(null);
@@ -29,7 +30,7 @@ const MapaPage = () => {
   if (!isLoaded) return <div>Carregando mapa...</div>;
 
   return (
-    <div className="h-[650px] w-full">
+    <div className="h-[600px] w-full">
       <GoogleMap
         mapContainerClassName="w-full h-full"
         center={center}
@@ -41,11 +42,11 @@ const MapaPage = () => {
             position={{ lat: filial.lat, lng: filial.lng }}
             title={filial.nome}
             onClick={() => handleMarkerClick(filial.id)}
-            label={selectedFilial === filial.id ? '✔' : undefined}
             icon={{
-              url: '/images/point.png', // Caminho relativo à pasta public
-              scaledSize: new google.maps.Size(40, 40), // Redimensiona o ícone (opcional)
+              url: filial.icon,
+              scaledSize: new google.maps.Size(32, 32), // Ajuste o tamanho conforme a imagem
             }}
+            label={selectedFilial === filial.id ? '✔' : undefined}
           />
         ))}
       </GoogleMap>
