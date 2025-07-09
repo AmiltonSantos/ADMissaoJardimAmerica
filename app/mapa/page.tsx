@@ -5,7 +5,7 @@ import { useCallback, useMemo, useState } from 'react';
 
 const MapaPage = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'AIzaSyANPuVxL2S1QKar8lsMXC4F-3g1DjHObyw',
   });
 
   const center = useMemo(() => ({
