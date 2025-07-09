@@ -29,7 +29,10 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section
+      id="home"
+      className="dark:bg-gray-dark relative z-10 overflow-hidden bg-white pb-16 pt-[120px] md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+    >
       {/* Slider principal */}
       <div className="absolute inset-0 z-0">
         <Swiper
