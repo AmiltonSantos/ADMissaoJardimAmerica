@@ -29,7 +29,7 @@ const MapaPage = () => {
   if (!isLoaded) return <div>Carregando mapa...</div>;
 
   return (
-    <div className="h-screen w-full">
+    <div className="h-[650px] w-full">
       <GoogleMap
         mapContainerClassName="w-full h-full"
         center={center}
