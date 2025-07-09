@@ -10,7 +10,6 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import { Metadata } from "next";
-import MapaPage from "./mapa/page";
 
 export const metadata: Metadata = {
   title: "AD Missão Jardim América - Goiânia",
@@ -31,7 +30,6 @@ export default function Home() {
       <Testimonials />
       <Pricing />
       <Blog />
-      <MapaPage />
       <Contact />
     </>
   );
