@@ -26,6 +26,10 @@ const MapaPage = () => {
     { id: 9, nome: 'AD Missão Jardim América - João Braz', lat: -16.688402737957688, lng: -49.35104938908731, icon: '/images/location/point.png' },
     { id: 10, nome: 'AD Missão Jardim América - Buriti Sereno', lat: -16.77265034505131, lng: -49.31031942114354, icon: '/images/location/point.png' },
     { id: 11, nome: 'Assembleia de Deus missão - Veiga Jardim', lat: -16.78524699420472, lng: -49.27453895787004, icon: '/images/location/point.png' },
+    { id: 12, nome: 'Assembleia de Deus Missão - Jardim Itaipú', lat: -16.78836500523481, lng: -49.36499778401419, icon: '/images/location/point.png' },
+    { id: 13, nome: 'Igreja AD Missão - Cardoso II', lat: -16.76494569342303, lng: -49.32432391320159, icon: '/images/location/point.png' },
+    { id: 14, nome: 'Assembleia de Deus Missão - Flor do Ipê', lat: -16.656835775689512, lng: -49.13562405238455, icon: '/images/location/point.png' },
+    { id: 15, nome: 'Ad Missão Pedro Miranda', lat: -16.729951881485526, lng: -49.089200042588494, icon: '/images/location/point.png' },
   ];
 
   const [selectedFilial, setSelectedFilial] = useState<number | null>(null);
