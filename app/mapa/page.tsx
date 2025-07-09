@@ -17,8 +17,8 @@ const MapaPage = () => {
   const filialLocations = [
     { id: 1, nome: 'AD Missão Jardim América - Sede', lat: -16.719597545737017, lng: -49.29065610808544, icon: '/images/point.png' },
     { id: 2, nome: 'AD Missão Jardim América - Setor dos Afonsos', lat: -16.73961881308889, lng: -49.26769419144868, icon: '/images/point.png' },
-    { id: 3, nome: 'Filial Norte', lat: -16.6500, lng: -49.2500, icon: '/images/point.png' },
-    { id: 4, nome: 'Filial Sul', lat: -16.7200, lng: -49.2900, icon: '/images/point.png' },
+    { id: 3, nome: 'Assembléia De Deus Ministério Missão Faiçalville', lat: -16.744697311090025, lng: -49.31881795557049, icon: '/images/point.png' },
+    { id: 4, nome: 'AD Missão Jardim América - Eli Forte', lat: -16.73361351758015, lng: -49.35228825863339, icon: '/images/point.png' },
   ];
 
   const [selectedFilial, setSelectedFilial] = useState<number | null>(null);
