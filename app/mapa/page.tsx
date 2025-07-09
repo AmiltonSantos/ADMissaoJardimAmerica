@@ -42,6 +42,10 @@ const MapaPage = () => {
             title={filial.nome}
             onClick={() => handleMarkerClick(filial.id)}
             label={selectedFilial === filial.id ? '✔' : undefined}
+            icon={{
+              url: '/images/point.png', // Caminho relativo à pasta public
+              scaledSize: new google.maps.Size(40, 40), // Redimensiona o ícone (opcional)
+            }}
           />
         ))}
       </GoogleMap>
