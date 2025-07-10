@@ -59,7 +59,7 @@ const MapaPage = () => {
             onClick={() => handleMarkerClick(filial.id)}
             icon={{
               url: filial.icon,
-              scaledSize: new google.maps.Size(32, 32), // Ajuste o tamanho conforme a imagem
+              scaledSize: new google.maps.Size(26, 32), // Ajuste o tamanho conforme a imagem
             }}
             label={selectedFilial === filial.id ? '✔' : undefined}
           />
