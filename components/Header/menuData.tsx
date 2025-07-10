@@ -33,20 +33,20 @@ const menuData: Menu[] = [
       {
         id: 41,
         title: "Instagram",
-        path: "/about",
+        path: "https://www.instagram.com/admissaojardimamerica/",
         newTab: false,
       },
       {
         id: 42,
         title: "YouTube",
-        path: "/location",
-        newTab: false,
+        path: "https://www.youtube.com/@assembleiadedeusmissao-jar3253",
+        newTab: true,
       },
       {
         id: 43,
         title: "Facebook",
-        path: "/blog",
-        newTab: false,
+        path: "https://www.facebook.com/admissaojardimamerica/?locale=pt_BR",
+        newTab: true,
       }
     ],
   },
