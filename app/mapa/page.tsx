@@ -30,6 +30,7 @@ const MapaPage = () => {
     { id: 13, nome: 'Igreja AD Missão - Cardoso II', lat: -16.76494569342303, lng: -49.32432391320159, icon: '/images/location/point.png' },
     { id: 14, nome: 'Assembleia de Deus Missão - Flor do Ipê', lat: -16.656835775689512, lng: -49.13562405238455, icon: '/images/location/point.png' },
     { id: 15, nome: 'Ad Missão Pedro Miranda', lat: -16.729951881485526, lng: -49.089200042588494, icon: '/images/location/point.png' },
+    { id: 15, nome: 'Ad Missão Alice Barbosa', lat: -16.594915641070433, lng: -49.27100487364266, icon: '/images/location/point.png' },
   ];
 
   const [selectedFilial, setSelectedFilial] = useState<number | null>(null);

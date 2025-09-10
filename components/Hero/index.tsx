@@ -13,17 +13,17 @@ const Hero = () => {
   const images = [
     {
       url: '/images/hero/igreja01.jpeg',
-      title: 'Soluções Inovadoras',
+      title: 'Banner 1',
       description: 'Desenvolvemos tecnologias que transformam seu negócio'
     },
     {
       url: '/images/hero/igreja02.jpeg',
-      title: 'Experiência do Cliente',
+      title: 'Banner 2',
       description: 'Criamos jornadas memoráveis para seus usuários'
     },
     {
       url: '/images/hero/igreja03.jpeg',
-      title: 'Performance Excepcional',
+      title: 'Banner 3',
       description: 'Sistemas otimizados para máxima eficiência'
     }
   ];
