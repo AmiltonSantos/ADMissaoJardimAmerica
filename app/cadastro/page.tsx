@@ -1,10 +1,10 @@
-import Cadastrochat from "@/components/cadastrochat";
+import Cadastro from "@/components/cadastro";
 
 
 const ContactPage = () => {
   return (
     <>
-      <Cadastrochat />
+      <Cadastro />
     </>
   );
 };

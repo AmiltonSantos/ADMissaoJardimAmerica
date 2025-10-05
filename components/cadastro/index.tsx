@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation'
 
-const Cadastrochat = () => {
+const Cadastro = () => {
 
     redirect('https://cadastro-membros-chat.vercel.app/home')
 };
 
-export default Cadastrochat;
+export default Cadastro;
