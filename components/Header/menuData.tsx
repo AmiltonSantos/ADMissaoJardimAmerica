@@ -8,6 +8,12 @@ const menuData: Menu[] = [
     newTab: false,
   },
   {
+    id: 16,
+    title: "Nossa História",
+    path: "/about",
+    newTab: false,
+  },
+  {
     id: 2,
     title: "Ofertar",
     path: "/about",
@@ -34,7 +40,7 @@ const menuData: Menu[] = [
         id: 41,
         title: "Instagram",
         path: "https://www.instagram.com/admissaojardimamerica/",
-        newTab: false,
+        newTab: true,
       },
       {
         id: 42,

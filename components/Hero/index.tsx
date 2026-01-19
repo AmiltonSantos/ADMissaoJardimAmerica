@@ -12,19 +12,19 @@ const Hero = () => {
 
   const images = [
     {
-      url: '/images/hero/igreja01.jpeg',
-      title: 'Banner 1',
-      description: 'Desenvolvemos tecnologias que transformam seu negócio'
+      url: '/images/hero/igreja01.jpeg'
     },
     {
-      url: '/images/hero/igreja02.jpeg',
-      title: 'Banner 2',
-      description: 'Criamos jornadas memoráveis para seus usuários'
+      url: '/images/hero/igreja02.jpeg'
     },
     {
-      url: '/images/hero/igreja03.jpeg',
-      title: 'Banner 3',
-      description: 'Sistemas otimizados para máxima eficiência'
+      url: '/images/hero/igreja03.jpeg'
+    },
+    {
+      url: '/images/hero/igreja04.jpeg'
+    },
+    {
+      url: '/images/hero/igreja05.jpeg'
     }
   ];
 
@@ -53,38 +53,11 @@ const Hero = () => {
                 className="h-full w-full bg-cover bg-center"
                 style={{ backgroundImage: `url(${image.url})` }}
               />
-              <div className="absolute inset-0 bg-black/40"></div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-
-      {/* Conteúdo sobreposto */}
-      <div className="relative z-10 flex h-full w-full flex-col justify-center">
-        <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="mb-6 text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-            {images[activeIndex].title}
-          </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-xl sm:text-2xl">
-            {images[activeIndex].description}
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/contato"
-              className="rounded-lg bg-blue-600 px-8 py-3 text-lg font-semibold text-white transition hover:bg-blue-700"
-            >
-              Saiba Mais
-            </Link>
-            <Link
-              href="/portfolio"
-              className="rounded-lg border-2 border-white px-8 py-3 text-lg font-semibold text-white transition hover:bg-white/10"
-            >
-              Nossos Trabalhos
-            </Link>
-          </div>
-        </div>
-      </div>
-
+     
       {/* Barra de progresso */}
       <div className="absolute bottom-0 left-0 right-0 z-10 h-1.5 bg-white/20">
         <div 
