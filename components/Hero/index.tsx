@@ -22,9 +22,6 @@ const Hero = () => {
     },
     {
       url: '/images/hero/igreja04.jpeg'
-    },
-    {
-      url: '/images/hero/igreja05.jpeg'
     }
   ];
 
