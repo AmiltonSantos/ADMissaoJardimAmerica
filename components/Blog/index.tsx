@@ -8,18 +8,24 @@ import ModalVideo from "react-modal-video";
 const videos = [
   {
     id: 1,
+    title: "CULTO DE DOMINGO- 08/03/2026",
+    videoId: "v8lrY-rjgRw",
+    thumb: "/images/video/v8lrY-rjgRw.png",
+  },
+  {
+    id: 2,
     title: "CULTO DE MISSÕES - 01/03/2026",
     videoId: "af-Frythh8M",
     thumb: "/images/video/af-Frythh8M.png",
   },
   {
-    id: 2,
+    id: 3,
     title: "CULTO DE ENSINO - 24/02/2026",
     videoId: "ELkE6B2OWhE",
     thumb: "/images/video/ELkE6B2OWhE.png",
   },
   {
-    id: 3,
+    id: 4,
     title: "CULTO DE MULHERES - 22/02/2026",
     videoId: "48Xul15vfe8",
     thumb: "/images/video/48Xul15vfe8.png",
