@@ -14,7 +14,7 @@ const Video = () => {
       <div className="container">
         <SectionTitle
           title="CANAL DO YOUTUBE"
-          paragraph="CULTO DE MISSÕES - 01/03/2026 - AD Missão Jardim América"
+          paragraph="CULTO DE DOMINGO- 08/03/2026 - AD Missão Jardim América"
           center
           mb="80px"
         />
