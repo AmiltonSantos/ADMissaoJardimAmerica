@@ -1,5 +1,6 @@
 'use client';
 
+import Breadcrumb from '@/components/Common/Breadcrumb';
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 import { useCallback, useMemo, useState } from 'react';
 
@@ -49,7 +50,7 @@ const MapaPage = () => {
         zoom={12}
         options={{
           gestureHandling: 'greedy', // Permite zoom com scroll sem precisar apertar Ctrl
-          scrollwheel: true,         // Garante que o scroll seja ativado
+          scrollwheel: false,         // Garante que o scroll seja ativado
         }}
       >
         {filialLocations.map((filial) => (

@@ -18,8 +18,6 @@ const ContactPage = () => {
         description="Procure no mapa algumas das nossas congregações que esteja mas perto de você, e venha fazer-nos uma visita, você será bem vindo..."
       />
       <MapaPage />
-
-      <Location />
     </>
   );
 };

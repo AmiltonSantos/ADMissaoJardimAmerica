@@ -13,7 +13,7 @@ const Video = () => {
     <section className="relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
-          title="CANAL DO YOUTUBE"
+          title=""
           paragraph="CULTO DE DOMINGO- 08/03/2026 - AD Missão Jardim América"
           center
           mb="80px"
