@@ -14,7 +14,7 @@ export default function SplashWrapper() {
   }, []);
   
   const handleFinish = () => {
-    //sessionStorage.setItem("seenSplash", "1");
+    sessionStorage.setItem("seenSplash", "1");
     setShow(false);
   };
 
