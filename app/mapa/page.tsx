@@ -35,6 +35,10 @@ const MapaPage = () => {
     { id: 17, nome: 'AD Missão Jardim América - Itanhangá (Privê Elza Fronza)', lat: -16.570161623870188, lng: -49.2790875757447, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
     { id: 18, nome: 'AD Missão Jardim América - Jardim Todos os Santos II', lat: -16.701815483937505, lng: -49.089931035633775, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
     { id: 19, nome: 'AD Missão Jardim América - Jardim Todos os Santos III', lat: -16.695656941417777, lng: -49.09183633907889, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
+    { id: 20, nome: 'AD Missão Jardim América - Bonfinópolis/GO', lat: -16.6128445929497, lng: -48.96331273061476, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
+    { id: 21, nome: 'AD Missão Jardim América - Aragoiânia/GO', lat: -16.921520484159615, lng: -49.44723673153304, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
+    { id: 22, nome: 'AD Missão Jardim América - São Bernado', lat: -16.577537606136108, lng: -49.399599419983076, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
+    { id: 23, nome: 'AD Missão Jardim América - Anincus/GO', lat: -16.45965196811984, lng: -49.95524654657013, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
   ];
 
   const [selectedFilial, setSelectedFilial] = useState<number | null>(null);
@@ -155,6 +159,10 @@ const MapaPage = () => {
     { id: 17, nome: 'AD Missão Jardim América - Itanhangá (Privê Elza Fronza)', lat: -16.570161623870188, lng: -49.2790875757447, icon: '/images/location/point.png' },
     { id: 18, nome: 'AD Missão Jardim América - Jardim Todos os Santos II', lat: -16.701815483937505, lng: -49.089931035633775, icon: '/images/location/point.png' },
     { id: 19, nome: 'AD Missão Jardim América - Jardim Todos os Santos III', lat: -16.695656941417777, lng: -49.09183633907889, icon: '/images/location/point.png' },
+    { id: 20, nome: 'AD Missão Jardim América - Bonfinópolis/GO', lat: -16.6128445929497, lng: -48.96331273061476, icon: '/images/location/point.png' },
+    { id: 21, nome: 'AD Missão Jardim América - Aragoiânia/GO', lat: -16.921520484159615, lng: -49.44723673153304, icon: '/images/location/point.png' },
+    { id: 22, nome: 'AD Missão Jardim América - São Bernado', lat: -16.577537606136108, lng: -49.399599419983076, icon: '/images/location/point.png' },
+    { id: 23, nome: 'AD Missão Jardim América - Anincus/GO', lat: -16.45965196811984, lng: -49.95524654657013, icon: '/images/location/point.png' },
   ];
 
   const [selectedFilial, setSelectedFilial] = useState<number | null>(null);
