@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <>
       <SplashWrapper />
-
       <ScrollUp />
       <Hero />
       <Video />
