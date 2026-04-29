@@ -50,7 +50,7 @@ const MapaPage = () => {
         zoom={12}
         options={{
           gestureHandling: 'greedy', // Permite zoom com scroll sem precisar apertar Ctrl
-          scrollwheel: false,         // Garante que o scroll seja ativado
+          scrollwheel: true,         // Garante que o scroll seja ativado
         }}
       >
         {filialLocations.map((filial) => (

@@ -19,8 +19,8 @@ export default function Home() {
       <ScrollUp />
       <Hero />
       <Video />
-      <MapaPage />
       <Blog />
+      <MapaPage />
     </>
   );
 }
