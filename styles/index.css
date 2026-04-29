@@ -41,3 +41,41 @@
     @apply opacity-100;
   }
 }
+
+.splash {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  svg {
+    width: 550px;
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &.fade-out {
+    opacity: 0;
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@keyframes splashIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.splash.show svg {
+  animation: splashIn 0.6s ease forwards;
+}
