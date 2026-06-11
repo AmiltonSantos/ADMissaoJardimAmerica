@@ -25,15 +25,7 @@
     @apply inline-flex;
   }
 
-  .sticky .header-logo {
-    @apply py-5 lg:py-2;
-  }
-
-  .sticky .menu-scroll.active {
-    @apply opacity-70;
-  }
-
-  input#togglePlan:checked ~ .dot {
+input#togglePlan:checked ~ .dot {
     @apply translate-x-full;
   }
 
@@ -68,6 +60,40 @@
     transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
+
+@keyframes heroProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.hero-progress {
+  animation: heroProgress linear forwards;
+}
+
+@keyframes heroZoomIn {
+  from { transform: scale(1); }
+  to   { transform: scale(1.14); }
+}
+
+@keyframes heroZoomOut {
+  from { transform: scale(1.14); }
+  to   { transform: scale(1); }
+}
+
+@keyframes heroPanLeft {
+  from { transform: scale(1.1) translateX(3%); }
+  to   { transform: scale(1.15) translateX(-3%); }
+}
+
+@keyframes heroPanRight {
+  from { transform: scale(1.1) translateX(-3%); }
+  to   { transform: scale(1.15) translateX(3%); }
+}
+
+.hero-zoom-in  { animation: heroZoomIn  7500ms ease-in-out forwards; }
+.hero-zoom-out { animation: heroZoomOut 7500ms ease-in-out forwards; }
+.hero-pan-left { animation: heroPanLeft 7500ms ease-in-out forwards; }
+.hero-pan-right{ animation: heroPanRight 7500ms ease-in-out forwards; }
 
 @keyframes splashIn {
   to {
