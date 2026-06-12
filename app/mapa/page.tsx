@@ -39,6 +39,7 @@ const MapaPage = () => {
     { id: 21, nome: 'AD Missão Jardim América - Aragoiânia/GO', lat: -16.921520484159615, lng: -49.44723673153304, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
     { id: 22, nome: 'AD Missão Jardim América - São Bernado', lat: -16.577537606136108, lng: -49.399599419983076, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
     { id: 23, nome: 'AD Missão Jardim América - Anincus/GO', lat: -16.45965196811984, lng: -49.95524654657013, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
+    { id: 24, nome: 'AD Missão Jardim América - Rio Araguaia', lat: -16.657842127287832, lng: -49.16011057973828, icon: '/images/location/point.png', foto: '/images/location/sede.jpg' },
   ];
 
   const [selectedFilial, setSelectedFilial] = useState<number | null>(null);
