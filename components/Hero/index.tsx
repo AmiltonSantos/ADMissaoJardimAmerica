@@ -2,56 +2,107 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { Autoplay, EffectFade } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper";
 import "swiper/css";
-import "swiper/css/effect-fade";
 
-const AUTOPLAY_DELAY = 4000;
+const AUTOPLAY_DELAY = 5000;
 
-const images = [
-  { url: "/images/hero/igreja01.png", anim: "hero-zoom-in"   },
-  { url: "/images/hero/igreja02.png", anim: "hero-zoom-out"  },
-  { url: "/images/hero/igreja03.png", anim: "hero-pan-left"  },
-  { url: "/images/hero/igreja04.jpeg", anim: "hero-pan-right" },
+const slides = [
+  {
+    url: "/images/hero/igreja01.png",
+    kenBurns: "hero-zoom-in",
+    transition: "hero-wipe-left",   // wipe horizontal
+  },
+  {
+    url: "/images/hero/igreja02.png",
+    kenBurns: "hero-zoom-out",
+    transition: "hero-dissolve",    // zoom + fade
+  },
+  {
+    url: "/images/hero/igreja03.png",
+    kenBurns: "hero-pan-left",
+    transition: "hero-curtain",     // cortina de cima
+  },
+  {
+    url: "/images/hero/igreja04.jpeg",
+    kenBurns: "hero-pan-right",
+    transition: "hero-diagonal",    // diagonal
+  },
 ];
 
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
+  const activeRef = useRef(0);
   const swiperRef = useRef<SwiperClass | null>(null);
+
+  const handleSlideChange = (swiper: SwiperClass) => {
+    setPrevIndex(activeRef.current);
+    activeRef.current = swiper.realIndex;
+    setActiveIndex(swiper.realIndex);
+  };
 
   return (
     <section
       id="home"
-      className="dark:bg-gray-dark relative z-10 h-[560px] overflow-hidden bg-white md:h-[640px] lg:h-[760px]"
+      className="dark:bg-gray-dark relative z-10 h-[560px] overflow-hidden bg-black md:h-[640px] lg:h-[760px]"
     >
-      {/* Slider com fade */}
+      {/* ── Layers visuais ── */}
       <div className="absolute inset-0 z-0">
-        <Swiper
-          spaceBetween={0}
-          effect="fade"
-          autoplay={{ delay: AUTOPLAY_DELAY, disableOnInteraction: false }}
-          loop
-          modules={[Autoplay, EffectFade]}
-          className="h-full w-full"
-          onSwiper={(swiper) => { swiperRef.current = swiper; }}
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        >
-          {images.map((image, index) => (
-            <SwiperSlide key={index}>
+        {slides.map((slide, index) => {
+          const isActive = index === activeIndex;
+          const isPrev = index === prevIndex;
+
+          return (
+            <div
+              key={index}
+              className={`absolute inset-0 ${
+                isActive
+                  ? prevIndex === null
+                    ? "" // primeira carga: sem animação de entrada
+                    : slide.transition
+                  : isPrev
+                  ? "opacity-0 transition-opacity duration-700"
+                  : "opacity-0"
+              }`}
+              style={{ zIndex: isActive ? 2 : isPrev ? 1 : 0 }}
+            >
+              {/* Ken Burns na imagem */}
               <div
-                key={index === activeIndex ? `active-${activeIndex}` : `idle-${index}`}
-                className={`h-full w-full bg-cover bg-center ${index === activeIndex ? image.anim : ""}`}
-                style={{ backgroundImage: `url(${image.url})` }}
+                key={isActive ? `kb-${activeIndex}` : `kb-idle-${index}`}
+                className={`h-full w-full bg-cover bg-center ${
+                  isActive ? slide.kenBurns : ""
+                }`}
+                style={{ backgroundImage: `url(${slide.url})` }}
               />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+            </div>
+          );
+        })}
+
+        {/* Overlay escuro */}
         <div className="absolute inset-0 z-10 bg-black/45" />
       </div>
 
-      {/* Texto centralizado */}
+      {/* ── Swiper invisível — só controla autoplay e índice ── */}
+      <div className="pointer-events-none absolute inset-0 opacity-0" aria-hidden="true">
+        <Swiper
+          speed={1}
+          loop
+          autoplay={{ delay: AUTOPLAY_DELAY, disableOnInteraction: false }}
+          modules={[Autoplay]}
+          className="h-full w-full"
+          onSwiper={(s) => { swiperRef.current = s; }}
+          onSlideChange={handleSlideChange}
+        >
+          {slides.map((_, i) => (
+            <SwiperSlide key={i} />
+          ))}
+        </Swiper>
+      </div>
+
+      {/* ── Texto centralizado ── */}
       <div className="absolute inset-0 z-20 flex items-center justify-center text-center text-white">
         <div>
           <h1 className="text-3xl font-bold drop-shadow-lg md:text-5xl xl:text-6xl">
@@ -79,9 +130,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Indicadores clicáveis */}
+      {/* ── Indicadores clicáveis ── */}
       <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-2">
-        {images.map((_, index) => (
+        {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => swiperRef.current?.slideToLoop(index)}
@@ -95,7 +146,7 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Barra de progresso */}
+      {/* ── Barra de progresso ── */}
       <div className="absolute bottom-0 left-0 right-0 z-20 h-1 bg-white/20">
         <div
           key={activeIndex}

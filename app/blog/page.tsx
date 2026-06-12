@@ -14,8 +14,8 @@ const cultosSemana = [
     diaCurto: "Dom",
     cultos: [
       {
-        horario: "09:00",
-        titulo: "Culto da Manhã",
+        horario: "08:30",
+        titulo: "EBD (Escola Bíblica Dominical)",
         descricao: "Louvor, adoração e pregação da Palavra.",
         cor: "bg-yellow-500",
         corLight: "bg-yellow-50 dark:bg-yellow-900/20",
@@ -25,7 +25,7 @@ const cultosSemana = [
       },
       {
         horario: "18:00",
-        titulo: "Culto da Tarde",
+        titulo: "Culto da Noite",
         descricao: "Momento de comunhão e edificação da fé.",
         cor: "bg-blue-500",
         corLight: "bg-blue-50 dark:bg-blue-900/20",
@@ -41,7 +41,7 @@ const cultosSemana = [
     cultos: [
       {
         horario: "19:30",
-        titulo: "Reunião de Oração",
+        titulo: "Culto de Ensino",
         descricao: "Intercessão, jejum e busca de Deus.",
         cor: "bg-purple-500",
         corLight: "bg-purple-50 dark:bg-purple-900/20",
@@ -52,12 +52,12 @@ const cultosSemana = [
     ],
   },
   {
-    dia: "Quarta-feira",
+    dia: "Quinta-feira",
     diaCurto: "Qua",
     cultos: [
       {
         horario: "19:30",
-        titulo: "Culto de Ensino",
+        titulo: "Culto de Senhoras",
         descricao: "Estudo aprofundado da Bíblia para crescimento espiritual.",
         cor: "bg-green-500",
         corLight: "bg-green-50 dark:bg-green-900/20",

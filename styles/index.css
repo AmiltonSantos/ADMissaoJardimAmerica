@@ -95,6 +95,37 @@ input#togglePlan:checked ~ .dot {
 .hero-pan-left { animation: heroPanLeft 7500ms ease-in-out forwards; }
 .hero-pan-right{ animation: heroPanRight 7500ms ease-in-out forwards; }
 
+/* ── Transições de entrada por slide ─────────────────────────────────────── */
+
+/* Slide 0 – Wipe horizontal (esquerda → direita) */
+@keyframes heroWipeLeft {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+/* Slide 1 – Dissolve com zoom leve */
+@keyframes heroDissolve {
+  from { opacity: 0; transform: scale(1.06); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Slide 2 – Cortina de cima para baixo */
+@keyframes heroCurtain {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0% 0); }
+}
+
+/* Slide 3 – Diagonal (canto esquerdo → direita) */
+@keyframes heroDiagonal {
+  from { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+  to   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+
+.hero-wipe-left { animation: heroWipeLeft 1000ms cubic-bezier(0.4, 0, 0.2, 1) both; }
+.hero-dissolve  { animation: heroDissolve 1000ms cubic-bezier(0.4, 0, 0.2, 1) both; }
+.hero-curtain   { animation: heroCurtain  1000ms cubic-bezier(0.4, 0, 0.2, 1) both; }
+.hero-diagonal  { animation: heroDiagonal 1000ms cubic-bezier(0.4, 0, 0.2, 1) both; }
+
 @keyframes splashIn {
   to {
     opacity: 1;
