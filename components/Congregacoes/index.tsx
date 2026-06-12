@@ -6,29 +6,49 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 const congregacoes = [
-  { id: 1, nome: "Sede", bairro: "Jardim América", isSede: true },
-  { id: 2, nome: "Setor dos Afonsos", bairro: "Goiânia" },
-  { id: 3, nome: "Faiçalville", bairro: "Goiânia" },
-  { id: 4, nome: "Eli Forte", bairro: "Goiânia" },
-  { id: 5, nome: "Norte Ferroviário", bairro: "Goiânia" },
-  { id: 6, nome: "Recanto do Bosque", bairro: "Goiânia" },
-  { id: 7, nome: "Boa Vista", bairro: "Goiânia" },
-  { id: 8, nome: "14 Bis", bairro: "Goiânia" },
-  { id: 9, nome: "João Braz", bairro: "Goiânia" },
-  { id: 10, nome: "Buriti Sereno", bairro: "Goiânia" },
-  { id: 11, nome: "Veiga Jardim", bairro: "Goiânia" },
-  { id: 12, nome: "Jardim Itaipú", bairro: "Goiânia" },
-  { id: 13, nome: "Cardoso II", bairro: "Goiânia" },
-  { id: 14, nome: "Flor do Ipê", bairro: "Goiânia" },
-  { id: 15, nome: "Pedro Miranda", bairro: "Goiânia" },
-  { id: 16, nome: "Alice Barbosa", bairro: "Goiânia" },
-  { id: 17, nome: "Itanhangá", bairro: "Goiânia" },
-  { id: 18, nome: "Jardim Todos os Santos II", bairro: "Goiânia" },
-  { id: 19, nome: "Jardim Todos os Santos III", bairro: "Goiânia" },
-  { id: 20, nome: "Bonfinópolis", bairro: "Goiás" },
-  { id: 21, nome: "Aragoiânia", bairro: "Goiás" },
-  { id: 22, nome: "São Bernardo", bairro: "Goiânia" },
-  { id: 23, nome: "Anápolis", bairro: "Goiás" },
+  { id: 1,  nome: "Sede",                            bairro: "Jardim América", isSede: true },
+  { id: 2,  nome: "Setor dos Afonsos",               bairro: "Goiânia" },
+  { id: 3,  nome: "Faiçalville",                     bairro: "Goiânia",        isSubSede: true },
+  { id: 4,  nome: "Residencial Eli Forte",           bairro: "Goiânia" },
+  { id: 5,  nome: "Norte Ferroviário",               bairro: "Goiânia" },
+  { id: 6,  nome: "Recanto do Bosque",               bairro: "Goiânia",        isSubSede: true },
+  { id: 7,  nome: "Boa Vista",                       bairro: "Goiânia" },
+  { id: 8,  nome: "14 Bis",                          bairro: "Trindade" },
+  { id: 9,  nome: "João Brás",                       bairro: "Goiânia",        isSubSede: true },
+  { id: 10, nome: "Buriti Sereno",                   bairro: "Goiânia" },
+  { id: 11, nome: "Veiga Jardim",                    bairro: "Goiânia",        isSubSede: true },
+  { id: 12, nome: "Jardim Itaipú",                   bairro: "Goiânia" },
+  { id: 13, nome: "Cardoso II",                      bairro: "Goiânia" },
+  { id: 14, nome: "Flor do Ypê",                     bairro: "Senador Canedo" },
+  { id: 15, nome: "Pedro Miranda",                   bairro: "Senador Canedo" },
+  { id: 16, nome: "Alice Barbosa",                   bairro: "Goiânia" },
+  { id: 17, nome: "Itanhangá",                       bairro: "Goiânia" },
+  { id: 18, nome: "Jardim Todos os Santos II",       bairro: "Senador Canedo",        isSubSede: true },
+  { id: 19, nome: "Jardim Todos os Santos III",      bairro: "Senador Canedo" },
+  { id: 20, nome: "Bonfinópolis",                    bairro: "Goiás" },
+  { id: 21, nome: "Aragoiânia",                      bairro: "Aragoiânia" },
+  { id: 22, nome: "São Bernardo",                    bairro: "Goiânia" },
+  { id: 23, nome: "Anicuns",                         bairro: "Goiás",          isSubSede: true },
+  { id: 24, nome: "Adelândia",                       bairro: "Adelândia" },
+  { id: 25, nome: "Americano do Brasil",             bairro: "Americano do Brasil" },
+  { id: 26, nome: "Santa Fé",                        bairro: "Goiás" },
+  { id: 27, nome: "Alto Cerrado",                    bairro: "Trindade" },
+  { id: 28, nome: "Vila Fátima",                     bairro: "Goiânia" },
+  { id: 29, nome: "São Marcos",                      bairro: "Goiânia" },
+  { id: 30, nome: "Residencial Portinari",           bairro: "Goiânia" },
+  { id: 31, nome: "Setor Campinas",                  bairro: "Goiânia" },
+  { id: 32, nome: "Goianira (Serra Dourada)",        bairro: "Goianira" },
+  { id: 33, nome: "Pedro Ludovico",                  bairro: "Goiânia" },
+  { id: 34, nome: "Vila Rosa",                       bairro: "Goiânia" },
+  { id: 35, nome: "Rio Araguaia",                    bairro: "Senador Canedo" },
+  { id: 36, nome: "Colina Azul",                     bairro: "Goiânia" },
+  { id: 37, nome: "Terra do Sol",                    bairro: "Goiânia" },
+  { id: 38, nome: "Vila Romana",                     bairro: "Goiânia",        isSubSede: true },
+  { id: 39, nome: "Goiânia Sul",                     bairro: "Abadia-GO" },
+  { id: 40, nome: "Boa Esperança",                   bairro: "Goiânia" },
+  { id: 41, nome: "Cromínia",                        bairro: "Cromínia",          isSubSede: true },
+  { id: 42, nome: "Hidrolândia",                     bairro: "Goiás" },
+  { id: 43, nome: "Setor Juliana",                   bairro: "Bonfinópolis" },
 ];
 
 const PinIcon = () => (
@@ -93,6 +113,8 @@ const Congregacoes = () => {
                 className={`flex h-full flex-col gap-3 rounded-xl border p-5 shadow-sm transition-shadow hover:shadow-md ${
                   c.isSede
                     ? "border-primary/30 bg-primary/5 dark:bg-primary/10"
+                    : "isSubSede" in c && c.isSubSede
+                    ? "border-orange-300/40 bg-orange-50/60 dark:bg-orange-900/10"
                     : "border-body-color/10 bg-white dark:bg-dark"
                 }`}
               >
@@ -103,6 +125,11 @@ const Congregacoes = () => {
                   {c.isSede && (
                     <span className="mb-1 block text-xs font-semibold uppercase text-primary">
                       Sede
+                    </span>
+                  )}
+                  {"isSubSede" in c && c.isSubSede && (
+                    <span className="mb-1 block text-xs font-semibold uppercase text-orange-500">
+                      Sub Sede
                     </span>
                   )}
                   <p className="text-sm font-semibold leading-snug text-black dark:text-white">

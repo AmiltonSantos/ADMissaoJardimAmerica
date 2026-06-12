@@ -3,8 +3,8 @@
 import { useState } from "react";
 
 // Substitua pelos dados reais da igreja
-const PIX_KEY = "00.000.000/0001-00"; // CNPJ ou chave pix real
-const PIX_BENEFICIARIO = "AD Missão Jardim América";
+const PIX_KEY = "00.184.519/0001-77"; // CNPJ ou chave pix real
+const PIX_BENEFICIARIO = "Igreja Evangélica Assembleia de Deus Ministério Missão";
 
 const Oferta = () => {
   const [copiado, setCopiado] = useState(false);

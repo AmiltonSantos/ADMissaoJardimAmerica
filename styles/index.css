@@ -95,6 +95,13 @@ input#togglePlan:checked ~ .dot {
 .hero-pan-left { animation: heroPanLeft 7500ms ease-in-out forwards; }
 .hero-pan-right{ animation: heroPanRight 7500ms ease-in-out forwards; }
 
+@media (max-width: 767px) {
+  .hero-zoom-in,
+  .hero-zoom-out,
+  .hero-pan-left,
+  .hero-pan-right { animation: none; transform: none; }
+}
+
 /* ── Transições de entrada por slide ─────────────────────────────────────── */
 
 /* Slide 0 – Wipe horizontal (esquerda → direita) */

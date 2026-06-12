@@ -5,9 +5,9 @@ import { useState } from "react";
 
 // ─── Dados ────────────────────────────────────────────────────────────────────
 
-const PIX_CHAVE = "00.000.000/0001-00"; // ← substitua pelo CNPJ/chave real
-const PIX_BENEFICIARIO = "AD Missão Jardim América";
-const PIX_BANCO = "Banco do Brasil";
+const PIX_CHAVE = "00.184.519/0001-77"; // ← substitua pelo CNPJ/chave real
+const PIX_BENEFICIARIO = "Igreja Evangélica Assembleia de Deus Ministério Missão"; // ← substitua pelo nome real do beneficiário
+const PIX_BANCO = "Coop Sicredi Cerrado Go";
 
 const formasDeOfertar = [
   {

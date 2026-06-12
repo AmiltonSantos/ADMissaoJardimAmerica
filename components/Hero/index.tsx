@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRef, useState } from "react";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -47,7 +46,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="dark:bg-gray-dark relative z-10 h-[560px] overflow-hidden bg-black md:h-[640px] lg:h-[760px]"
+      className="dark:bg-gray-dark relative z-10 overflow-hidden bg-black [height:clamp(320px,55vh,560px)] md:[height:640px] lg:[height:760px]"
     >
       {/* ── Layers visuais ── */}
       <div className="absolute inset-0 z-0">
@@ -72,9 +71,7 @@ const Hero = () => {
               {/* Ken Burns na imagem */}
               <div
                 key={isActive ? `kb-${activeIndex}` : `kb-idle-${index}`}
-                className={`h-full w-full bg-cover bg-center ${
-                  isActive ? slide.kenBurns : ""
-                }`}
+                className={`h-full w-full bg-cover bg-center ${isActive ? slide.kenBurns : ""}`}
                 style={{ backgroundImage: `url(${slide.url})` }}
               />
             </div>
@@ -111,13 +108,22 @@ const Hero = () => {
           <p className="mt-4 text-base opacity-90 drop-shadow md:text-xl">
             Assembleia de Deus · Goiânia - Goiás
           </p>
+          <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/75">
+            <svg className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Rua C-160, 1338 — Jardim América, Goiânia - GO, 74255-130
+          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/location"
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=-16.719599456718694,-49.29065379621161"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-md bg-white px-7 py-3 text-base font-semibold text-primary shadow transition hover:bg-white/90"
             >
               Como Chegar
-            </Link>
+            </a>
             <a
               href="https://www.youtube.com/@assembleiadedeusmissao-jar3253"
               target="_blank"
