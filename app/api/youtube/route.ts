@@ -52,7 +52,7 @@ export async function GET() {
     }
 
     const xml = await res.text();
-    const entries = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)];
+    const entries = Array.from(xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g));
 
     const videos: VideoItem[] = entries.slice(0, 8).map((match) => {
       const entry = match[1];

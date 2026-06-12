@@ -166,8 +166,8 @@ const OfertarPage = () => {
       <section className="bg-primary py-10">
         <div className="container text-center text-white">
           <p className="mx-auto max-w-2xl text-lg font-medium italic leading-relaxed opacity-95 md:text-xl">
-            "Cada um contribua segundo propôs no seu coração; não com tristeza,
-            ou por necessidade; porque Deus ama ao que dá com alegria."
+            &ldquo;Cada um contribua segundo propôs no seu coração; não com tristeza,
+            ou por necessidade; porque Deus ama ao que dá com alegria.&rdquo;
           </p>
           <p className="mt-3 text-sm font-semibold opacity-80">2 Coríntios 9:7</p>
         </div>
@@ -300,10 +300,10 @@ const OfertarPage = () => {
                 Deus Honra Quem O Honra
               </h3>
               <p className="mx-auto max-w-xl text-base leading-relaxed opacity-90 md:text-lg">
-                "Trazei todos os dízimos à casa do tesouro, para que haja
+                &ldquo;Trazei todos os dízimos à casa do tesouro, para que haja
                 mantimento na minha casa, e depois fazei prova de mim nisto,
                 diz o SENHOR dos Exércitos, se eu não vos abrir as janelas do
-                céu e não derramar sobre vós uma bênção sem medida."
+                céu e não derramar sobre vós uma bênção sem medida.&rdquo;
               </p>
               <p className="mt-4 text-sm font-semibold opacity-80">Malaquias 3:10</p>
             </div>

@@ -81,8 +81,8 @@ const Oferta = () => {
           </div>
 
           <p className="mt-8 text-sm opacity-70">
-            "Cada um contribua segundo propôs no seu coração; não com tristeza,
-            ou por necessidade; porque Deus ama ao que dá com alegria."
+            &ldquo;Cada um contribua segundo propôs no seu coração; não com tristeza,
+            ou por necessidade; porque Deus ama ao que dá com alegria.&rdquo;
             <br />
             <span className="font-semibold">2 Coríntios 9:7</span>
           </p>
