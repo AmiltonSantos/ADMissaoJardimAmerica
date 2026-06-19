@@ -36,7 +36,7 @@ const timeline = [
       "Pioneiros da Assembleia de Deus chegaram ao estado de Goiás na década de 1930, plantando igrejas em cidades do interior e na própria capital. A obra cresceu rapidamente, formando dezenas de congregações que alcançaram bairros e municípios de toda a região.",
   },
   {
-    ano: "1980s",
+    ano: "1994",
     titulo: "AD Missão Jardim América",
     descricao:
       "No bairro Jardim América, em Goiânia, foi fundada a AD Missão Jardim América — com uma visão clara de evangelismo local e cuidado pastoral de cada família. Desde sua fundação, a igreja cresceu, multiplicou congregações e se tornou referência espiritual na região.",
@@ -156,20 +156,48 @@ export default function SobrePage() {
                 Uma Igreja Plantada por Deus
               </h2>
               <p className="mb-5 text-base leading-relaxed text-body-color md:text-lg">
-                A Assembleia de Deus Missão Jardim América é parte de uma história que começou
-                em 1911, nas margens do Rio Amazonas, quando dois missionários suecos obedeceram
-                a uma visão divina e plantaram no Brasil uma das maiores obras do Espírito Santo
-                no mundo.
+                A chama do avivamento pentecostal chegou a Goiás, por ocasião da 
+                construção de Goiânia, que teve o lançamento da pedra fundamental em 1933 
+                e a construção em 1935. A pregação do evangelho e da mensagem pentecostal 
+                teve início com o operário Antônio do Carmo Moreira, diácono da 
+                Igreja Assembleia de Deus.
               </p>
               <p className="mb-5 text-base leading-relaxed text-body-color md:text-lg">
-                Hoje, mais de um século depois, aquela semente se multiplica em{" "}
-                <strong className="text-black dark:text-white">40 congregações</strong> em
-                Goiânia e região, com centenas de famílias alcançadas pelo poder transformador
-                do Evangelho de Jesus Cristo.
+                Em 1936 ele veio para Goiânia trabalhar como mestre-de-obras na 
+                edificação do Palácio das Esmeraldas, futura sede do governo do Estado. 
+                Discípulo do pastor Paulo Leivas Macalão, não imaginava que, 
+                na verdade havia sido enviado pela providência de Deus para trabalhar 
+                na edificação, principalmente de uma casa espiritual, edificada 
+                com pedras vivas: almas transformadas pela mensagem da cruz.
               </p>
-              <p className="text-base leading-relaxed text-body-color md:text-lg">
-                Nossa missão é a mesma do primeiro dia: pregar Cristo crucificado e ressurreto,
-                discipular vidas e enviar obreiros até os confins da terra.
+              <p className="mb-5 text-base leading-relaxed text-body-color md:text-lg">
+                Obtendo permissão da Empresa Construtora, passou a dirigir cultos aos domingos. 
+                O então interventor Dr. Pedro Ludovico Teixeira, tomando conhecimento, 
+                mandou investigar e recebeu relatório que não havia nada de anormal. 
+                Teve então apoio do interventor, porque já conhecia os evangélicos 
+                da Igreja Cristã Evangélica. Posteriormente doou o terreno para a 
+                construção do primeiro templo assembleiano na nova capital, 
+                na Rua 55 nº 18, conta o pastor Moizeis Alexandre.
+              </p>
+              <p className="mb-5 text-base leading-relaxed text-body-color md:text-lg">
+                O pastor José Braga da Silva liderava a Igreja Assembleia de Deus 
+                na cidade de Uberlândia/MG desde o ano de 1970, quando sentiu a 
+                direção de Deus em abrir também um trabalho pentecostal em Goiânia. 
+                Passou então a presidência da Igreja para o pastor Álvaro Sanches 
+                em 1994 e viajou para abrir o novo trabalho do Senhor, 
+                atendendo assim o clamor de muitos irmãos que em Goiânia, 
+                ansiavam por uma Igreja que preservava os bons costumes e 
+                princípios pentecostais da nossa querida Assembleia de Deus.
+              </p>
+              <p className="mb-5 text-base leading-relaxed text-body-color md:text-lg">
+                Com o apoio da Assembleia de Deus de Uberlândia, foi realizado 
+                o culto de abertura no dia 21 de janeiro de 1994 no CEPAL – Centro 
+                Popular de Abastecimento e Lazer, Jardim América, na Rua C-1, em seguida 
+                os cultos passaram a ser dirigidos em um salão, alugado, na 
+                Avenida T-63 esquina da Rua C-159, Jardim América e, em definitivo, 
+                para o templo ainda em construção na Rua C-160 Qd 371 Lt 17./18 
+                Foram muitas lutas e provações, no entanto o trabalho foi 
+                confirmado pelo Senhor, e hoje, já conta com várias congregações
               </p>
             </div>
             <div className="overflow-hidden rounded-2xl shadow-xl">
