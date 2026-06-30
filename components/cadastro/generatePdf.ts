@@ -54,12 +54,13 @@ function createDottedLine(x1: number, y1: number, x2: number, y2: number, dashLe
   return lines;
 }
 
-export async function generatePdf(formData: FormData): Promise<void> {
+async function buildDoc(formData: FormData) {
   const pdfMakeModule = await import("pdfmake/build/pdfmake");
   const pdfFontsModule = await import("pdfmake/build/vfs_fonts");
 
   const pdfMake = (pdfMakeModule.default ?? pdfMakeModule) as any;
   const fontsRaw = pdfFontsModule as any;
+  // pdfmake 0.2.x: vfs_fonts exports the font map directly
   pdfMake.vfs = fontsRaw.default ?? fontsRaw;
 
   const logoData = await loadImageAsBase64("/header-igreja.png");
@@ -449,5 +450,24 @@ export async function generatePdf(formData: FormData): Promise<void> {
   };
 
   const fileName = `${nome || "cadastro"}_${new Date().toLocaleDateString("pt-BR").replace(/\//g, "-")}.pdf`;
+  return { pdfMake, docDefinition, fileName };
+}
+
+export async function generatePdf(formData: FormData): Promise<void> {
+  const { pdfMake, docDefinition, fileName } = await buildDoc(formData);
   pdfMake.createPdf(docDefinition).download(fileName);
+}
+
+export async function getPdfBlob(formData: FormData): Promise<{ blob: Blob; fileName: string }> {
+  const { pdfMake, docDefinition, fileName } = await buildDoc(formData);
+  return new Promise((resolve, reject) => {
+    try {
+      pdfMake.createPdf(docDefinition).getBuffer((buffer: ArrayBuffer) => {
+        const blob = new Blob([buffer], { type: "application/pdf" });
+        resolve({ blob, fileName });
+      });
+    } catch (err) {
+      reject(err);
+    }
+  });
 }

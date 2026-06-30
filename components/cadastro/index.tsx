@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { steps } from "./data/questions";
 import FormInput from "./FormInput";
-import { generatePdf } from "./generatePdf";
-import { FileTextIcon } from "lucide-react";
+import { generatePdf, getPdfBlob } from "./generatePdf";
+import { DownloadIcon, ExternalLinkIcon, FileTextIcon } from "lucide-react";
 
 function useMultiStep(totalSteps: number) {
   const [step, setStep] = useState(0);
@@ -36,7 +36,7 @@ export default function Cadastro() {
     else next();
   }
 
-  async function handleGeneratePdf() {
+  async function handleDownload() {
     setGenerating(true);
     setError(null);
     try {
@@ -44,6 +44,21 @@ export default function Cadastro() {
     } catch (err) {
       console.error("Erro ao gerar PDF:", err);
       setError("Erro ao gerar PDF. Verifique o console.");
+    } finally {
+      setGenerating(false);
+    }
+  }
+
+  async function handleOpenPdf() {
+    setGenerating(true);
+    setError(null);
+    try {
+      const { blob, fileName } = await getPdfBlob(data);
+      const url = URL.createObjectURL(blob);
+      window.open(url, "_blank");
+    } catch (err) {
+      console.error("Erro ao abrir PDF:", err);
+      setError("Erro ao abrir PDF. Verifique o console.");
     } finally {
       setGenerating(false);
     }
@@ -63,12 +78,20 @@ export default function Cadastro() {
             </div>
             {error && <p className="text-red-500 text-sm text-center">{error}</p>}
             <button
-              onClick={handleGeneratePdf}
+              onClick={handleDownload}
               disabled={generating}
               className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl py-4 font-medium disabled:bg-gray-300 flex items-center justify-center gap-2 transition"
             >
-              <FileTextIcon className="w-5 h-5" />
-              {generating ? "Gerando PDF..." : "Baixar Ficha PDF"}
+              <DownloadIcon className="w-5 h-5" />
+              {generating ? "Gerando PDF..." : "Baixar no aparelho"}
+            </button>
+            <button
+              onClick={handleOpenPdf}
+              disabled={generating}
+              className="w-full bg-green-600 hover:bg-green-700 text-white rounded-xl py-4 font-medium disabled:bg-gray-300 flex items-center justify-center gap-2 transition"
+            >
+              <ExternalLinkIcon className="w-5 h-5" />
+              {generating ? "Gerando PDF..." : "Abrir PDF"}
             </button>
             <button
               onClick={() => { setCompleted(false); setData({}); setError(null); reset(); }}
@@ -86,7 +109,7 @@ export default function Cadastro() {
     <section className="relative z-10 overflow-hidden pt-6 pb-10 md:pt-8 md:pb-16">
       <div className="container">
         <div className="max-w-md mx-auto bg-white dark:bg-dark rounded-2xl shadow-lg p-8">
-          <h1 className="text-center text-3xl font-bold text-dark dark:text-white mb-2">Cadastro</h1>
+          <h1 className="text-center text-3xl font-bold text-dark dark:text-white mb-2">Ficha de Cadastro</h1>
           <p className="text-center text-body-color text-sm mb-6">
             Passo {step + 1} de {steps.length} &mdash; {currentStep.title}
           </p>
@@ -158,6 +181,7 @@ export default function Cadastro() {
               {isLastStep ? "Finalizar" : "Próximo"}
             </button>
           </div>
+
         </div>
       </div>
     </section>
