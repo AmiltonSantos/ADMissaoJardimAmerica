@@ -60,7 +60,7 @@ export const steps: FormStep[] = [
         label: "Sua escolaridade?",
         type: "select",
         required: true,
-        options: ["Fundamental", "Médio", "Superior", "Pós-graduação", "Mestrado", "Doutorado"],
+        options: ["FUNDAMENTAL", "MÉDIO", "SUPERIOR", "PÓS-GRADUAÇÃO", "MESTRADO", "DOUTORADO"],
       },
       { id: "whatsapp", label: "Número do Whatsapp?", type: "phone", required: true },
       { id: "cep", label: "Qual o seu CEP?", type: "cep", required: true },
@@ -80,6 +80,7 @@ export const steps: FormStep[] = [
     title: "Localização",
     fields: [
       { id: "bairro", label: "Nome do bairro?", type: "text", required: true },
+      { id: "cidade", label: "Cidade onde mora?", type: "text", required: true },
       {
         id: "estado",
         label: "Estado onde mora?",
@@ -87,7 +88,6 @@ export const steps: FormStep[] = [
         required: true,
         options: estados.map((e) => e.nome),
       },
-      { id: "cidade", label: "Cidade onde mora?", type: "text", required: true },
     ],
   },
   {
@@ -95,14 +95,15 @@ export const steps: FormStep[] = [
     title: "Vida Cristã",
     fields: [
       { id: "batismoAguas", label: "Qual a data batismo nas águas?", type: "date", required: true },
-      { id: "batismoEspSanto", label: "Qual a data batismo no Espírito Santo?", type: "date", required: true },
-      { id: "obreiro", label: "É obreiro?", type: "radio", required: true, options: ["Sim", "Não"] },
+      { id: "batizadoEspSanto", label: "É batizado no Espírito Santo?", type: "radio", required: true, options: ["SIM", "NÃO"] },
+      { id: "batismoEspSanto", label: "Qual a data batismo no Espírito Santo?", type: "date", required: false },
     ],
   },
   {
     step: 9,
     title: "Ministério",
     fields: [
+      { id: "obreiro", label: "É obreiro?", type: "radio", required: true, options: ["Sim", "Não"] },
       {
         id: "cargo",
         label: "Cargo?",

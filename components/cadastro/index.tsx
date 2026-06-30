@@ -26,7 +26,10 @@ export default function Cadastro() {
 
   const { step, next, previous, reset, isFirstStep, isLastStep } = useMultiStep(steps.length);
   const currentStep = steps[step];
-  const isStepValid = currentStep.fields.every((f) => data[f.id]?.trim());
+  const isStepValid = currentStep.fields.every((f) => {
+    if (f.id === "batismoEspSanto") return data.batizadoEspSanto === "NÃO" || data[f.id]?.trim();
+    return !f.required || data[f.id]?.trim();
+  });
 
   function handleNext() {
     if (isLastStep) setCompleted(true);
@@ -106,14 +109,19 @@ export default function Cadastro() {
           </div>
 
           <div className="space-y-6">
-            {currentStep.fields.map((field) => (
-              <FormInput
-                key={field.id}
-                field={field}
-                value={data[field.id] || ""}
-                onChange={(value) => setData((prev) => ({ ...prev, [field.id]: value }))}
-              />
-            ))}
+            {currentStep.fields.map((field) => {
+              if (field.id === "batismoEspSanto" && data.batizadoEspSanto !== "SIM") {
+                return null;
+              }
+              return (
+                <FormInput
+                  key={field.id}
+                  field={field}
+                  value={data[field.id] || ""}
+                  onChange={(value) => setData((prev) => ({ ...prev, [field.id]: value }))}
+                />
+              );
+            })}
           </div>
 
           <div className="flex gap-4 mt-10">

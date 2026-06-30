@@ -47,7 +47,7 @@ export default function FormInput({ field, value, onChange }: Props) {
               className={`px-5 py-3 rounded-xl border text-sm font-medium transition ${
                 value === option
                   ? "bg-primary border-primary text-white"
-                  : "border-gray-200 text-gray-700 hover:border-primary"
+                  : "border-gray-200 text-white hover:border-primary"
               }`}
             >
               {option}
