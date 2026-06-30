@@ -113,12 +113,30 @@ export default function Cadastro() {
               if (field.id === "batismoEspSanto" && data.batizadoEspSanto !== "SIM") {
                 return null;
               }
+
+              let resolvedField = field;
+              if (field.id === "cargo") {
+                const isObreiro = data.obreiro === "Sim";
+                resolvedField = {
+                  ...field,
+                  options: isObreiro
+                    ? ["COOPERADOR", "DIÁCONO", "PRESBÍTERO", "EVANGELISTA", "PASTOR"]
+                    : ["MEMBRO"],
+                };
+              }
+
               return (
                 <FormInput
                   key={field.id}
-                  field={field}
+                  field={resolvedField}
                   value={data[field.id] || ""}
-                  onChange={(value) => setData((prev) => ({ ...prev, [field.id]: value }))}
+                  onChange={(value) => {
+                    if (field.id === "obreiro") {
+                      setData((prev) => ({ ...prev, obreiro: value, cargo: "" }));
+                    } else {
+                      setData((prev) => ({ ...prev, [field.id]: value }));
+                    }
+                  }}
                 />
               );
             })}
