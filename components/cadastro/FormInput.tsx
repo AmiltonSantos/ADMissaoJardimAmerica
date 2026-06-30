@@ -24,7 +24,7 @@ function maskPhone(raw: string): string {
 const inputClass =
   "w-full border border-gray-200 dark:border-gray-600 rounded-xl p-4 mt-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition";
 
-const labelClass = "block text-sm font-medium text-white mb-1";
+const labelClass = "block text-sm font-medium text-gray-700 dark:text-white mb-1";
 
 interface Props {
   field: Question;
@@ -47,7 +47,7 @@ export default function FormInput({ field, value, onChange }: Props) {
               className={`px-5 py-3 rounded-xl border text-sm font-medium transition ${
                 value === option
                   ? "bg-primary border-primary text-white"
-                  : "border-gray-200 text-white hover:border-primary"
+                  : "border-gray-200 text-gray-700 dark:text-white hover:border-primary"
               }`}
             >
               {option}

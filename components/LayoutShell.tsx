@@ -10,7 +10,12 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
   const isCadastro = pathname === "/cadastro";
 
   if (isCadastro) {
-    return <div className="min-h-screen bg-[#FCFCFC] dark:bg-black">{children}</div>;
+    return (
+      <div className="min-h-screen bg-[#FCFCFC] dark:bg-black">
+        <Header />
+        {children}
+      </div>
+    );
   }
 
   return (

@@ -91,11 +91,11 @@ export default function Cadastro() {
             Passo {step + 1} de {steps.length} &mdash; {currentStep.title}
           </p>
 
-          <div className="flex justify-center gap-2 mb-8 flex-wrap">
+          <div className="flex justify-center gap-1 sm:gap-2 mb-8">
             {steps.map((_, i) => (
               <div
                 key={i}
-                className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium transition ${
+                className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-medium transition flex-shrink-0 ${
                   i < step
                     ? "bg-primary text-white"
                     : i === step

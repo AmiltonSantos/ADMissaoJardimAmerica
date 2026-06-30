@@ -42,7 +42,7 @@ export default function DatePicker({ value, onChange, label }: Props) {
 
   return (
     <div>
-      <label className="block text-sm font-medium text-white mb-2">{label}</label>
+      <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">{label}</label>
       <input
         type="text"
         inputMode="numeric"
