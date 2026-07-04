@@ -3,6 +3,17 @@ import { readFile } from "fs/promises";
 
 const EXT_IMAGEM = /\.(jpe?g|png|webp|gif|avif|tiff?|bmp)$/i;
 
+async function tentarLer(...caminhos: string[]): Promise<Buffer | null> {
+  for (const c of caminhos) {
+    try {
+      return await readFile(c);
+    } catch {
+      // tenta próximo
+    }
+  }
+  return null;
+}
+
 export async function carregarFoto(origem: string): Promise<Buffer | null> {
   const valor = origem.trim();
   if (!valor) return null;
@@ -21,14 +32,26 @@ export async function carregarFoto(origem: string): Promise<Buffer | null> {
     return null;
   }
 
-  const caminho = path.isAbsolute(valor)
-    ? valor
-    : path.join(process.cwd(), valor);
+  const cwd = process.cwd();
+  // FOTO_DIR env permite configurar pasta base das fotos sem alterar o Excel
+  const fotoDir = process.env.FOTO_DIR ?? "";
+  const nome = path.basename(valor);
 
-  try {
-    return await readFile(caminho);
-  } catch {
-    console.warn(`Foto ignorada, arquivo não encontrado: ${caminho}`);
-    return null;
+  const candidatos = path.isAbsolute(valor)
+    ? [
+        valor,
+        ...(fotoDir ? [path.join(fotoDir, nome)] : []),
+      ]
+    : [
+        path.resolve(valor),
+        path.join(cwd, valor),
+        path.join(cwd, "public", valor),
+        ...(fotoDir ? [path.join(fotoDir, valor), path.join(fotoDir, nome)] : []),
+      ];
+
+  const buf = await tentarLer(...candidatos);
+  if (!buf) {
+    console.warn(`Foto ignorada, não encontrada em:\n  ${candidatos.join("\n  ")}`);
   }
+  return buf;
 }
