@@ -20,7 +20,15 @@ export async function POST(req: NextRequest) {
   }
 
   const registro = registros[0];
-  const fotoBuffer = registro.foto ? await carregarFoto(registro.foto) : null;
+
+  // Foto enviada pelo form tem prioridade sobre caminho no Excel
+  let fotoBuffer: Buffer | null = null;
+  const fotoUpload = formData.get("foto");
+  if (fotoUpload instanceof File && fotoUpload.size > 0) {
+    fotoBuffer = Buffer.from(await fotoUpload.arrayBuffer());
+  } else if (registro.foto) {
+    fotoBuffer = await carregarFoto(registro.foto);
+  }
 
   const frente = await gerarFrente(registro, fotoBuffer);
   const verso = await gerarVerso(registro);

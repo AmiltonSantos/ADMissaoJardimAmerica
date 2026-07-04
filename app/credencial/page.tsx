@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function CredencialPage() {
   const [excel, setExcel] = useState<File | null>(null);
+  const [foto, setFoto] = useState<File | null>(null);
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
@@ -17,6 +18,7 @@ export default function CredencialPage() {
     try {
       const formData = new FormData();
       formData.append("excel", excel);
+      if (foto) formData.append("foto", foto);
 
       const res = await fetch("/api/credencial", {
         method: "POST",
@@ -61,8 +63,23 @@ export default function CredencialPage() {
               />
             </div>
 
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                Foto do membro
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setFoto(e.target.files?.[0] ?? null)}
+                className="block w-full text-sm text-gray-700 dark:text-gray-300 file:mr-4 file:rounded-lg file:border-0 file:bg-primary file:px-4 file:py-2 file:text-white file:cursor-pointer"
+              />
+              <p className="text-xs text-gray-400 dark:text-gray-500">
+                Opcional — substitui o caminho da coluna &quot;foto&quot; na planilha.
+              </p>
+            </div>
+
             <p className="text-xs text-gray-400 dark:text-gray-500">
-              Colunas: nome, cargo, cpf, nascimento, batismo, naturalidade, emissão, foto (URL ou caminho).
+              Colunas da planilha: nome, cargo, cpf, nascimento, batismo, naturalidade, emissão, foto.
             </p>
 
             {erro && <p className="text-sm text-red-500">{erro}</p>}
