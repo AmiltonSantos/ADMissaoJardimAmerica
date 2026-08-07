@@ -45,7 +45,7 @@ const menuData: Menu[] = [
       {
         id: 42,
         title: "YouTube",
-        path: "https://www.youtube.com/@assembleiadedeusmissao-jar3253",
+        path: "https://www.youtube.com/@admissaojardimamerica",
         newTab: true,
       },
       {

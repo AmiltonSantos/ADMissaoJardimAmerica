@@ -42,7 +42,7 @@ const Video = () => {
       <div className="container">
         <SectionTitle
           title="CANAL DO YOUTUBE"
-          paragraph="@assembleiadedeusmissao-jar3253"
+          paragraph="@admissaojardimamerica"
           center
           mb="80px"
         />

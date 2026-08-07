@@ -68,7 +68,7 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="https://www.youtube.com/@assembleiadedeusmissao-jar3253"
+                    href="https://www.youtube.com/@admissaojardimamerica"
                     aria-label="social-link"
                     className="dark:text-body-color-dark mr-6 text-body-color duration-300 hover:text-primary dark:hover:text-primary"
                   >

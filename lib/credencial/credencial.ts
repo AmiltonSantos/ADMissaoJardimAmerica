@@ -28,7 +28,7 @@ export async function gerarFrente(dados: Registro, fotoBuffer?: Buffer | null): 
     </defs>
     <style>
       .nome { fill:white; stroke: black; stroke-width: 1px; paint-order: stroke fill; font-size:47px; font-family:'Arial Black', sans-serif; }
-      .cargo { fill:white; font-size:62px; font-family:'Arial Black', sans-serif; }
+      .cargo { fill:white; font-size:50px; font-family:'Arial Black', sans-serif; }
     </style>
     <text x="280" y="370" class="nome" filter="url(#sombra)">${esc(dados.nome)}</text>
     <text x="420" y="505" class="cargo" filter="url(#sombra)">${esc(dados.cargo)}</text>

@@ -25,7 +25,9 @@ async function resolveChannelId(handle: string): Promise<string | null> {
       next: { revalidate: 86400 }, // canal muda raramente — cache 24h
     });
     const html = await res.text();
-    const match = html.match(/"channelId":"(UC[^"]+)"/);
+    const match =
+      html.match(/"channelId":"(UC[^"]+)"/) ??
+      html.match(/"externalId":"(UC[^"]+)"/);
     return match ? match[1] : null;
   } catch {
     return null;
@@ -35,7 +37,7 @@ async function resolveChannelId(handle: string): Promise<string | null> {
 export async function GET() {
   const channelId =
     process.env.YOUTUBE_CHANNEL_ID ||
-    (await resolveChannelId("assembleiadedeusmissao-jar3253"));
+    (await resolveChannelId("admissaojardimamerica"));
 
   if (!channelId) {
     return NextResponse.json({ videos: [] });

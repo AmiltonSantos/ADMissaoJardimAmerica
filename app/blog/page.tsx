@@ -381,7 +381,7 @@ const ProgramacaoPage = () => {
                   Instagram
                 </a>
                 <a
-                  href="https://www.youtube.com/@assembleiadedeusmissao-jar3253"
+                  href="https://www.youtube.com/@admissaojardimamerica"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-xl border-2 border-white px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
