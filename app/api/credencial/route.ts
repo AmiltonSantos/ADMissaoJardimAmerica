@@ -3,23 +3,30 @@ import { lerPlanilha } from "@/lib/credencial/excel";
 import { carregarFoto } from "@/lib/credencial/foto";
 import { gerarFrente, gerarVerso } from "@/lib/credencial/credencial";
 import { gerarPDF } from "@/lib/credencial/pdf";
+import type { Registro } from "@/lib/credencial/types";
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData();
   const excel = formData.get("excel");
+  const dados = formData.get("dados");
 
-  if (!(excel instanceof File)) {
-    return NextResponse.json({ erro: "Campo 'excel' é obrigatório" }, { status: 400 });
+  let registro: Registro;
+
+  // Dados digitados no formulário têm prioridade sobre a planilha
+  if (typeof dados === "string") {
+    registro = { foto: "", ...JSON.parse(dados) };
+  } else if (excel instanceof File) {
+    const excelBuffer = Buffer.from(await excel.arrayBuffer());
+    const registros = await lerPlanilha(excelBuffer);
+
+    if (registros.length === 0) {
+      return NextResponse.json({ erro: "Planilha sem registros" }, { status: 400 });
+    }
+
+    registro = registros[0];
+  } else {
+    return NextResponse.json({ erro: "Campo 'excel' ou 'dados' é obrigatório" }, { status: 400 });
   }
-
-  const excelBuffer = Buffer.from(await excel.arrayBuffer());
-  const registros = await lerPlanilha(excelBuffer);
-
-  if (registros.length === 0) {
-    return NextResponse.json({ erro: "Planilha sem registros" }, { status: 400 });
-  }
-
-  const registro = registros[0];
 
   // Foto enviada pelo form tem prioridade sobre caminho no Excel
   let fotoBuffer: Buffer | null = null;
