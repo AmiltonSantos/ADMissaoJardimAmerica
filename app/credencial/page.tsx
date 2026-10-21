@@ -46,6 +46,9 @@ const mascaraData = (valor: string) =>
 
 const padraoData = "(0[1-9]|[12]\\d|3[01])/(0[1-9]|1[0-2])/\\d{4}";
 
+// Senha mockada para liberar a geração do PDF (validação apenas no navegador)
+const SENHA = "admissaojardimamerica";
+
 const cargos = ["MEMBRO", "COOPERADOR", "DIÁCONO", "PRESBÍTERO", "EVANGELISTA", "PASTOR"];
 
 const inputClass =
@@ -64,6 +67,9 @@ export default function CredencialPage() {
   // Imagem escolhida aguardando recorte
   const [fotoOriginal, setFotoOriginal] = useState<File | null>(null);
   const [fotoPreview, setFotoPreview] = useState<string | null>(null);
+  const [senhaAberta, setSenhaAberta] = useState(false);
+  const [senha, setSenha] = useState("");
+  const [erroSenha, setErroSenha] = useState<string | null>(null);
 
   useEffect(() => {
     if (!foto) return setFotoPreview(null);
@@ -83,8 +89,27 @@ export default function CredencialPage() {
     if (fotoRef.current) fotoRef.current.value = "";
   }
 
-  async function onSubmit() {
+  function onSubmit() {
     setErro(null);
+    if (!formPreenchido && !excel) {
+      setErro("Selecione a planilha ou preencha o formulário");
+      return;
+    }
+    setSenha("");
+    setErroSenha(null);
+    setSenhaAberta(true);
+  }
+
+  function onConfirmarSenha() {
+    if (senha !== SENHA) {
+      setErroSenha("Senha incorreta");
+      return;
+    }
+    setSenhaAberta(false);
+    gerarPdf();
+  }
+
+  async function gerarPdf() {
     const formData = new FormData();
 
     // Formulário preenchido tem prioridade sobre a planilha
@@ -98,9 +123,6 @@ export default function CredencialPage() {
       );
     } else if (excel) {
       formData.append("excel", excel);
-    } else {
-      setErro("Selecione a planilha ou preencha o formulário");
-      return;
     }
 
     setCarregando(true);
@@ -330,6 +352,51 @@ export default function CredencialPage() {
                 className="flex-1 rounded-xl bg-primary px-4 py-3 font-medium text-white hover:bg-primary/90 transition"
               >
                 Salvar
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+
+      {senhaAberta && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-4"
+          onClick={() => setSenhaAberta(false)}
+        >
+          <form
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+            onSubmit={(e) => { e.preventDefault(); onConfirmarSenha(); }}
+            className="w-full max-w-sm space-y-4 rounded-2xl bg-white dark:bg-dark p-6 shadow-lg"
+          >
+            <h2 className="text-xl font-bold text-dark dark:text-white">Senha</h2>
+
+            <input
+              type="password"
+              autoFocus
+              required
+              value={senha}
+              onChange={(e) => { setSenha(e.target.value); setErroSenha(null); }}
+              placeholder="Digite a senha"
+              className={inputClass}
+            />
+
+            {erroSenha && <p className="text-sm text-red-500">{erroSenha}</p>}
+
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => setSenhaAberta(false)}
+                className="flex-1 rounded-xl border border-gray-300 dark:border-gray-600 px-4 py-3 font-medium text-gray-700 dark:text-white transition"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                className="flex-1 rounded-xl bg-primary px-4 py-3 font-medium text-white hover:bg-primary/90 transition"
+              >
+                Confirmar
               </button>
             </div>
           </form>
