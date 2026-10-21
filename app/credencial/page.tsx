@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import CortarFoto from "@/components/CortarFoto";
 
 const hoje = () => {
   const d = new Date();
@@ -59,6 +60,28 @@ export default function CredencialPage() {
   const [dados, setDados] = useState(dadosIniciais);
   const [formPreenchido, setFormPreenchido] = useState(false);
   const excelRef = useRef<HTMLInputElement>(null);
+  const fotoRef = useRef<HTMLInputElement>(null);
+  // Imagem escolhida aguardando recorte
+  const [fotoOriginal, setFotoOriginal] = useState<File | null>(null);
+  const [fotoPreview, setFotoPreview] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!foto) return setFotoPreview(null);
+    const url = URL.createObjectURL(foto);
+    setFotoPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [foto]);
+
+  function onEscolherFoto(arquivo: File | null) {
+    if (arquivo) setFotoOriginal(arquivo);
+    else setFoto(null);
+  }
+
+  function onCancelarRecorte() {
+    setFotoOriginal(null);
+    setFoto(null);
+    if (fotoRef.current) fotoRef.current.value = "";
+  }
 
   async function onSubmit() {
     setErro(null);
@@ -182,11 +205,20 @@ export default function CredencialPage() {
                 Foto do membro
               </label>
               <input
+                ref={fotoRef}
                 type="file"
                 accept="image/*"
-                onChange={(e) => setFoto(e.target.files?.[0] ?? null)}
+                onChange={(e) => onEscolherFoto(e.target.files?.[0] ?? null)}
                 className="block w-full text-sm text-gray-700 dark:text-gray-300 file:mr-4 file:rounded-lg file:border-0 file:bg-primary file:px-4 file:py-2 file:text-white file:cursor-pointer"
               />
+              {fotoPreview && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={fotoPreview}
+                  alt="Foto recortada"
+                  className="h-32 w-24 rounded-lg border border-gray-200 dark:border-gray-700 object-cover"
+                />
+              )}
               <p className="text-xs text-gray-400 dark:text-gray-500">
                 Opcional — substitui o caminho da coluna &quot;foto&quot; na planilha.
               </p>
@@ -302,6 +334,14 @@ export default function CredencialPage() {
             </div>
           </form>
         </div>
+      )}
+
+      {fotoOriginal && (
+        <CortarFoto
+          arquivo={fotoOriginal}
+          onConfirmar={(recortada) => { setFoto(recortada); setFotoOriginal(null); }}
+          onCancelar={onCancelarRecorte}
+        />
       )}
     </section>
   );
