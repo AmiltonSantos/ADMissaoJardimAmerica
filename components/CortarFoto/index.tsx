@@ -46,6 +46,8 @@ export default function CortarFoto({ arquivo, onConfirmar, onCancelar }: Props) 
       width: LARGURA_SAIDA,
       height: ALTURA_SAIDA,
       imageSmoothingQuality: "high",
+      // JPEG não tem transparência: preenche fundo de PNG transparente com branco
+      fillColor: "#ffffff",
     });
     if (!canvas) return;
     canvas.toBlob(

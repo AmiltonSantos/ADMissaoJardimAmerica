@@ -131,7 +131,11 @@ export async function gerarFrente(dados: Registro, fotoBuffer?: Buffer | null): 
     const RAIO = 24;
     const BORDA = 3;
 
-    let foto = await sharp(fotoBuffer).resize(W, H, { fit: "cover" }).toBuffer();
+    // flatten: fundo transparente (PNG) vira branco em vez de preto
+    let foto = await sharp(fotoBuffer)
+      .flatten({ background: "#ffffff" })
+      .resize(W, H, { fit: "cover" })
+      .toBuffer();
 
     const mascara = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="${W}" height="${H}" rx="${RAIO}" ry="${RAIO}"/>
