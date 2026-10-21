@@ -45,6 +45,7 @@ export const congregacoes = [
       { value: "VILA ROSA" },
       { value: "SETOR DOS AFONSO" },
       { value: "RESIDENCIAL ELI FORTE" },
+      { value: "JARDIM ATLÂNTICO" },
     ],
   },
   {
