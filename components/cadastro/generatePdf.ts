@@ -19,7 +19,8 @@ function formatCep(cep: string): string {
 }
 
 function formatPhone(phone: string): string {
-  return phone.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3").slice(0, 15);
+  // Valor vem com máscara do input ("(11) 9 8765-4321"); normaliza pelos dígitos
+  return phone.replace(/\D/g, "").slice(0, 11).replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
 }
 
 async function loadImageAsBase64(url: string): Promise<string | null> {
@@ -219,7 +220,7 @@ async function buildDoc(formData: FormData) {
                     columns: [
                       { width: "23%", stack: [{ text: "Estado Civil", fontSize: 10 }, { table: { widths: [73], heights: 12, body: [[{ text: estadoCivil, fontSize: 10, bold: true }]] }, layout: layoutTable }] },
                       { width: "30%", stack: [{ text: "Escolaridade", fontSize: 10 }, { table: { widths: [100], heights: 12, body: [[{ text: escolaridade, fontSize: 10, bold: true }]] }, layout: layoutTable, margin: [0, 0, 10, 0] }] },
-                      { width: "25%", stack: [{ text: "WhatsApp", fontSize: 10 }, { table: { widths: [80], heights: 12, body: [[{ text: formatPhone(whatsapp), fontSize: 10, bold: true }]] }, layout: layoutTable, margin: [0, 0, 10, 0] }] },
+                      { width: "25%", stack: [{ text: "WhatsApp", fontSize: 10 }, { table: { widths: [80], heights: 12, body: [[{ text: formatPhone(whatsapp), fontSize: 9, bold: true }]] }, layout: layoutTable, margin: [0, 0, 10, 0] }] },
                       { width: "28%", stack: [{ text: "Telefone 2", fontSize: 10 }, { table: { widths: [81], heights: 12, body: [[{ text: "", bold: true }]] }, layout: layoutTable, margin: [0, 0, 10, 0] }] },
                     ],
                     margin: [9, 0, 0, 2],
