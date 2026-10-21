@@ -18,7 +18,7 @@ function esc(valor: string): string {
     .replace(/"/g, "&quot;");
 }
 
-const NOME_MAX_CHARS = 25; // máximo de caracteres por linha (espaços contam)
+const NOME_MAX_CHARS = 28; // máximo de caracteres por linha (espaços contam)
 const NOME_MAX_LINHAS = 2;
 const NOME_FONTE_BASE = 45;
 const NOME_FONTE_MAX = 60; // teto para nomes curtos (cargo usa 62px)
@@ -58,8 +58,8 @@ function quebrarLinhas(texto: string, limite: number): string[] {
   return linhas;
 }
 
-// Até 25 caracteres: 1 linha. Acima disso: quebra em linhas de até 25.
-// Se mesmo assim não couber em NOME_MAX_LINHAS (ou houver palavra única > 25),
+// Até NOME_MAX_CHARS caracteres: 1 linha. Acima disso: quebra em linhas de até NOME_MAX_CHARS.
+// Se mesmo assim não couber em NOME_MAX_LINHAS (ou houver palavra única maior),
 // aumenta o limite por linha. Depois ajusta a fonte (para mais ou para menos)
 // até a linha mais larga ocupar NOME_LARGURA_MAX, limitada a NOME_FONTE_MAX.
 async function layoutNome(nome: string): Promise<{ linhas: string[]; fonte: number }> {
