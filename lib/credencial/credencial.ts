@@ -21,9 +21,24 @@ function esc(valor: string): string {
 const NOME_MAX_CHARS = 25; // máximo de caracteres por linha (espaços contam)
 const NOME_MAX_LINHAS = 2;
 const NOME_FONTE_BASE = 45;
+const NOME_FONTE_MAX = 60; // teto para nomes curtos (cargo usa 62px)
 // Centro horizontal da área do nome (entre o fim da foto, x=270, e a margem direita, x≈984)
 const NOME_X = 627;
 const NOME_Y = 370;
+// Largura máxima de cada linha do nome (área de 714px menos folga nas bordas)
+const NOME_LARGURA_MAX = 680;
+
+const ESTILO_NOME =
+  "fill:white; stroke: black; stroke-width: 1px; paint-order: stroke fill; font-family:'Arial Black', sans-serif;";
+
+// Mede a largura real do texto renderizado (mesma fonte do SVG final)
+async function medirLargura(texto: string, fonte: number): Promise<number> {
+  const svg = `<svg width="4000" height="${fonte * 2}" xmlns="http://www.w3.org/2000/svg">
+    <text x="0" y="${fonte * 1.5}" style="${ESTILO_NOME} font-size:${fonte}px">${esc(texto)}</text>
+  </svg>`;
+  const { info } = await sharp(Buffer.from(svg)).trim().toBuffer({ resolveWithObject: true });
+  return info.width;
+}
 
 // Quebra o texto por palavras sem ultrapassar `limite` caracteres por linha (espaços inclusos).
 function quebrarLinhas(texto: string, limite: number): string[] {
@@ -43,23 +58,25 @@ function quebrarLinhas(texto: string, limite: number): string[] {
   return linhas;
 }
 
-// Até 25 caracteres: 1 linha, fonte base. Acima disso: quebra em linhas de até 25.
+// Até 25 caracteres: 1 linha. Acima disso: quebra em linhas de até 25.
 // Se mesmo assim não couber em NOME_MAX_LINHAS (ou houver palavra única > 25),
-// aumenta o limite por linha e reduz a fonte na mesma proporção.
-function layoutNome(nome: string): { linhas: string[]; fonte: number } {
+// aumenta o limite por linha. Depois ajusta a fonte (para mais ou para menos)
+// até a linha mais larga ocupar NOME_LARGURA_MAX, limitada a NOME_FONTE_MAX.
+async function layoutNome(nome: string): Promise<{ linhas: string[]; fonte: number }> {
   let limite = NOME_MAX_CHARS;
   let linhas = quebrarLinhas(nome, limite);
   while (linhas.length > NOME_MAX_LINHAS) {
     limite++;
     linhas = quebrarLinhas(nome, limite);
   }
-  const maior = Math.max(...linhas.map((l) => l.length), 1);
-  const fonte = Math.floor(NOME_FONTE_BASE * Math.min(1, NOME_MAX_CHARS / maior));
+  const larguras = await Promise.all(linhas.map((l) => medirLargura(l, NOME_FONTE_BASE)));
+  const maior = Math.max(...larguras, 1);
+  const fonte = Math.min(NOME_FONTE_MAX, Math.floor((NOME_FONTE_BASE * NOME_LARGURA_MAX) / maior));
   return { linhas, fonte };
 }
 
-function svgNome(nome: string): string {
-  const { linhas, fonte } = layoutNome(nome);
+async function svgNome(nome: string): Promise<string> {
+  const { linhas, fonte } = await layoutNome(nome);
   const alturaLinha = Math.round(fonte * 1.15);
   // Centraliza o bloco verticalmente em torno da posição original (y=370)
   const yInicial = NOME_Y - ((linhas.length - 1) * alturaLinha) / 2;
@@ -99,10 +116,10 @@ export async function gerarFrente(dados: Registro, fotoBuffer?: Buffer | null): 
       </filter>
     </defs>
     <style>
-      .nome { fill:white; stroke: black; stroke-width: 1px; paint-order: stroke fill; font-family:'Arial Black', sans-serif; }
+      .nome { ${ESTILO_NOME} }
       .cargo { fill:white; font-size:62px; font-family:'Arial Black', sans-serif; }
     </style>
-    ${svgNome(dados.nome)}
+    ${await svgNome(dados.nome)}
     <text x="${cargoX(dados.cargo)}" y="505" class="cargo" filter="url(#sombra)">${esc(dados.cargo)}</text>
   </svg>`;
 
