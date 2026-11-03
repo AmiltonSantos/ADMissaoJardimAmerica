@@ -93,12 +93,23 @@ export default function Cadastro() {
               <ExternalLinkIcon className="w-5 h-5" />
               {generating ? "Gerando PDF..." : "Abrir PDF"}
             </button>
-            <button
-              onClick={() => { setCompleted(false); setData({}); setError(null); reset(); }}
-              className="w-full border border-primary text-primary rounded-xl py-4 font-medium hover:bg-primary/5 transition"
-            >
-              Novo Cadastro
-            </button>
+            <div className="flex w-full gap-3">
+              {/* Volta ao último passo mantendo os dados preenchidos */}
+              <button
+                onClick={() => { setCompleted(false); setError(null); }}
+                disabled={generating}
+                className="flex-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white rounded-xl py-4 font-medium disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-white/5 transition"
+              >
+                Voltar
+              </button>
+              <button
+                onClick={() => { setCompleted(false); setData({}); setError(null); reset(); }}
+                disabled={generating}
+                className="flex-1 border border-primary text-primary rounded-xl py-4 font-medium disabled:opacity-50 hover:bg-primary/5 transition"
+              >
+                Novo Cadastro
+              </button>
+            </div>
           </div>
         </div>
       </section>
