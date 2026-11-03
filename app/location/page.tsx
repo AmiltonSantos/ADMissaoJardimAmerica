@@ -1,13 +1,14 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import Location from "@/components/Location";
 
 import { Metadata } from "next";
 import MapaPage from "../mapa/page";
 
 export const metadata: Metadata = {
-  title: "AD Missão Jardim América - Goiânia",
-  description: "Site da Assembleia de Deus Ministério Missão Jardim América em Goiânia - Goiás",
-  // other metadata
+  // Foco: Igreja Assembleia de Deus Jardim América / igreja evangélica perto de mim
+  title: "Como Chegar - Igreja Assembleia de Deus Jardim América",
+  description:
+    "Encontre a Igreja Assembleia de Deus no Setor Jardim América, Goiânia-GO (Rua C-160, 1338) e a congregação da AD Missão mais perto de você no mapa.",
+  alternates: { canonical: "/location" },
 };
 
 const ContactPage = () => {

@@ -2,7 +2,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AD MISSÃO JARDIM AMÉRICA",
+  title: "Links Oficiais",
+  alternates: { canonical: "/bio" },
   description:
     "A Assembleia de Deus Ministério Missão Jardim América é fundamentada na Palavra de Deus, na ação do Espírito Santo e na vida de santidade.",
 };

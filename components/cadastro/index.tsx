@@ -53,7 +53,7 @@ export default function Cadastro() {
     setGenerating(true);
     setError(null);
     try {
-      const { blob, fileName } = await getPdfBlob(data);
+      const { blob } = await getPdfBlob(data);
       const url = URL.createObjectURL(blob);
       window.open(url, "_blank");
     } catch (err) {

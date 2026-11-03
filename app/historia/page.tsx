@@ -3,9 +3,11 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nossa História | AD Missão Jardim América",
+  // Foco: Assembleia de Deus Ministério Missão
+  title: "Nossa História - Assembleia de Deus Ministério Missão",
   description:
-    "Conheça a história da Assembleia de Deus no Brasil e da AD Missão Jardim América em Goiânia - GO.",
+    "Conheça a história da Assembleia de Deus no Brasil e da Assembleia de Deus Ministério Missão Jardim América em Goiânia-GO: fé, missão e mais de 40 congregações.",
+  alternates: { canonical: "/historia" },
 };
 
 // ─── Dados ────────────────────────────────────────────────────────────────────
@@ -396,7 +398,7 @@ export default function SobrePage() {
                 Como Chegar
               </a>
               <a
-                href="/blog"
+                href="/programacao"
                 className="rounded-xl border-2 border-white px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
               >
                 Ver Programação

@@ -8,15 +8,21 @@ import Oferta from "@/components/Oferta";
 import MapaPage from "./mapa/page";
 import SplashWrapper from "@/components/splash/SplashWrapper";
 import { Metadata } from "next";
+import { SITE_TITULO, jsonLdIgreja } from "@/lib/seo";
 
+// Foco: Assembleia de Deus Missão Goiânia
 export const metadata: Metadata = {
-  title: "AD Missão Jardim América - Goiânia",
-  description: "Site da Assembleia de Deus Ministério Missão Jardim América em Goiânia - Goiás",
+  title: { absolute: SITE_TITULO },
+  alternates: { canonical: "/" },
 };
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdIgreja) }}
+      />
       <SplashWrapper />
       <ScrollUp />
       <Hero />

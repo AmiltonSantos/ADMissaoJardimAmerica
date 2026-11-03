@@ -2,8 +2,11 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Programação | AD Missão Jardim América",
-  description: "Confira os cultos semanais e próximos eventos da AD Missão Jardim América em Goiânia.",
+  // Foco: horários de cultos e eventos em Goiânia
+  title: "Horários de Cultos e Eventos em Goiânia",
+  description:
+    "Horários dos cultos da Assembleia de Deus em Goiânia: Escola Bíblica Dominical, culto de domingo, culto de ensino, culto de senhoras, evangelismo e próximos eventos da AD Missão Jardim América.",
+  alternates: { canonical: "/programacao" },
 };
 
 // ─── Dados ────────────────────────────────────────────────────────────────────

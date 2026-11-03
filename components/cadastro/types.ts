@@ -32,5 +32,3 @@ export interface FormStep {
   title: string;
   fields: Question[];
 }
-
-export type FormData = Record<string, string>;

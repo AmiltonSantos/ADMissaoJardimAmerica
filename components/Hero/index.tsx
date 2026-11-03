@@ -106,7 +106,7 @@ const Hero = () => {
             AD Missão Jardim América
           </h1>
           <p className="mt-4 text-base opacity-90 drop-shadow md:text-xl">
-            Assembleia de Deus · Goiânia - Goiás
+            Assembleia de Deus Ministério Missão · Goiânia - GO
           </p>
           <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/75">
             <svg className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

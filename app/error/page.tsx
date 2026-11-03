@@ -3,9 +3,8 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AD Missão Jardim América - Goiânia",
-  description: "Site da Assembleia de Deus Ministério Missão Jardim América em Goiânia - Goiás",
-  // other metadata
+  title: "Página não encontrada",
+  robots: { index: false, follow: true },
 };
 
 const ErrorPage = () => {

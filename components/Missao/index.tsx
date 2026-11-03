@@ -28,7 +28,7 @@ const Missao = () => {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/about"
+                href="/historia"
                 className="inline-flex items-center gap-2 rounded-md bg-primary px-7 py-3 text-base font-semibold text-white transition hover:bg-primary/90"
               >
                 Nossa História

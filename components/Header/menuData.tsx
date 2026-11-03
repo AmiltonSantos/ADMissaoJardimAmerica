@@ -10,7 +10,7 @@ const menuData: Menu[] = [
   {
     id: 16,
     title: "Nossa História",
-    path: "/about",
+    path: "/historia",
     newTab: false,
   },
   {
@@ -22,7 +22,7 @@ const menuData: Menu[] = [
   {
     id: 33,
     title: "Programação",
-    path: "/blog",
+    path: "/programacao",
     newTab: false,
   },
   {
