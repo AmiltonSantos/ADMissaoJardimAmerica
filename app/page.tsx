@@ -1,11 +1,9 @@
-import ScrollUp from "@/components/Common/ScrollUp";
-import Hero from "@/components/Hero";
-import Missao from "@/components/Missao";
-import Missoes from "@/components/Missoes";
 import Blog from "@/components/Blog";
-import Congregacoes from "@/components/Congregacoes";
-import Oferta from "@/components/Oferta";
-import MapaPage from "./mapa/page";
+import HomeHero from "@/components/Home/HomeHero";
+import Institucional from "@/components/Home/Institucional";
+import MissoesCarrossel from "@/components/Home/MissoesCarrossel";
+import Cultos from "@/components/Home/Cultos";
+import Doacao from "@/components/Home/Doacao";
 import SplashWrapper from "@/components/splash/SplashWrapper";
 import { Metadata } from "next";
 import { SITE_TITULO, jsonLdIgreja } from "@/lib/seo";
@@ -24,14 +22,13 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdIgreja) }}
       />
       <SplashWrapper />
-      <ScrollUp />
-      <Hero />
-      <Missao />
-      <Missoes />
+      {/* Layout inspirado em adbelem.org.br */}
+      <HomeHero />
+      <MissoesCarrossel />
+      <Institucional />
       <Blog />
-      <Congregacoes />
-      <Oferta />
-      <MapaPage />
+      <Cultos />
+      <Doacao />
     </>
   );
 }

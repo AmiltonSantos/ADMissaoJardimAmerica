@@ -18,6 +18,15 @@ function decodeXml(str: string) {
     .replace(/&#39;/g, "'");
 }
 
+// "CULTO DE ENSINO  - 03/11/2026 - AD Missão." → "culto de ensino - 03/11/2026 - ad missão"
+function normalizarTitulo(titulo: string) {
+  return titulo
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .replace(/[\s.]+$/, "")
+    .trim();
+}
+
 async function resolveChannelId(handle: string): Promise<string | null> {
   try {
     const res = await fetch(`https://www.youtube.com/@${handle}`, {
@@ -56,7 +65,7 @@ export async function GET() {
     const xml = await res.text();
     const entries = Array.from(xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g));
 
-    const videos: VideoItem[] = entries.slice(0, 8).map((match) => {
+    const todos: VideoItem[] = entries.map((match) => {
       const entry = match[1];
       const videoId =
         (entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/) ?? [])[1] ?? "";
@@ -74,6 +83,22 @@ export async function GET() {
         thumb: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
       };
     });
+
+    // Quando a transmissão ao vivo cai ou falha ao iniciar, o canal reabre
+    // outra live com o MESMO título → vídeos com IDs diferentes e título
+    // repetido (às vezes um deles fica vazio, com 0s e 0 views).
+    // O feed vem do mais novo para o mais antigo, então mantemos só a
+    // primeira ocorrência de cada título (a transmissão mais recente).
+    const vistos = new Set<string>();
+    const videos = todos
+      .filter((v) => {
+        if (!v.videoId) return false;
+        const chave = normalizarTitulo(v.title);
+        if (vistos.has(chave)) return false;
+        vistos.add(chave);
+        return true;
+      })
+      .slice(0, 8);
 
     return NextResponse.json({ videos });
   } catch {

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-// Mapa também aparece em / e /location: evita conteúdo duplicado
+// Mapa também aparece em /location: evita conteúdo duplicado
 export const metadata: Metadata = {
   title: "Mapa das Congregações",
   robots: { index: false, follow: true },

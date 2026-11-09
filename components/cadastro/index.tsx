@@ -56,6 +56,8 @@ export default function Cadastro() {
       const { blob } = await getPdfBlob(data);
       const url = URL.createObjectURL(blob);
       window.open(url, "_blank");
+      // Libera a memória do blob depois que a aba carregou o PDF
+      setTimeout(() => URL.revokeObjectURL(url), 60_000);
     } catch (err) {
       console.error("Erro ao abrir PDF:", err);
       setError("Erro ao abrir PDF. Verifique o console.");
@@ -134,7 +136,7 @@ export default function Cadastro() {
                     ? "bg-primary text-white"
                     : i === step
                     ? "bg-primary text-white ring-2 ring-primary ring-offset-2"
-                    : "bg-gray-200 text-gray-500 dark:bg-dark-3"
+                    : "bg-gray-200 text-gray-500 dark:bg-gray-700"
                 }`}
               >
                 {i + 1}

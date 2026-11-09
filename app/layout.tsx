@@ -1,9 +1,10 @@
 import LayoutShell from "@/components/LayoutShell";
 import { Inter } from "next/font/google";
-import "node_modules/react-modal-video/css/modal-video.css";
+import "react-modal-video/css/modal-video.css";
 import "../styles/index.css";
 import type { Metadata } from "next";
 import { OG_IMAGEM, PALAVRAS_CHAVE, SITE_DESCRICAO, SITE_NOME, SITE_TITULO, SITE_URL } from "@/lib/seo";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,7 +45,6 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="pt-BR">
-      <head />
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
         <Providers>
           <LayoutShell>{children}</LayoutShell>
@@ -53,5 +53,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-import { Providers } from "./providers";

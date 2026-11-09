@@ -1,7 +1,6 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
-
+import Mapa from "@/components/Mapa";
 import { Metadata } from "next";
-import MapaPage from "../mapa/page";
 
 export const metadata: Metadata = {
   // Foco: Igreja Assembleia de Deus Jardim América / igreja evangélica perto de mim
@@ -11,16 +10,16 @@ export const metadata: Metadata = {
   alternates: { canonical: "/location" },
 };
 
-const ContactPage = () => {
+const LocationPage = () => {
   return (
     <>
       <Breadcrumb
         pageName="Localização"
-        description="Procure no mapa algumas das nossas congregações que esteja mas perto de você, e venha fazer-nos uma visita, você será bem vindo..."
+        description="Procure no mapa a congregação mais perto de você e venha nos fazer uma visita. Você será bem-vindo!"
       />
-      <MapaPage />
+      <Mapa />
     </>
   );
 };
 
-export default ContactPage;
+export default LocationPage;

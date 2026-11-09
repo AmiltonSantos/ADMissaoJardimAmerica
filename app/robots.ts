@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       // Páginas internas/administrativas fora dos buscadores
-      disallow: ["/api/", "/credencial", "/error", "/mapa"],
+      disallow: ["/api/", "/credencial", "/mapa"],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

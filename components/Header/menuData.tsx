@@ -1,3 +1,4 @@
+import { REDES } from "@/lib/igreja";
 import { Menu } from "@/types/menu";
 
 const menuData: Menu[] = [
@@ -39,21 +40,21 @@ const menuData: Menu[] = [
       {
         id: 41,
         title: "Instagram",
-        path: "https://www.instagram.com/admissaojardimamerica/",
+        path: REDES.instagram,
         newTab: true,
       },
       {
         id: 42,
         title: "YouTube",
-        path: "https://www.youtube.com/@admissaojardimamerica",
+        path: REDES.youtube,
         newTab: true,
       },
       {
         id: 43,
         title: "Facebook",
-        path: "https://www.facebook.com/admissaojardimamerica/?locale=pt_BR",
+        path: REDES.facebook,
         newTab: true,
-      }
+      },
     ],
   },
 ];

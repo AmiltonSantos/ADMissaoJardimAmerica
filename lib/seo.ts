@@ -1,5 +1,7 @@
 // Dados centrais de SEO do site (usados em metadata, sitemap e JSON-LD)
 
+import { REDES } from "./igreja";
+
 export const SITE_URL = "https://www.admissaojardimamerica.com.br";
 
 export const SITE_NOME = "AD Missão Jardim América";
@@ -34,11 +36,6 @@ const ENDERECO = {
 
 const TELEFONE = "+55-62-99449-7444";
 
-const REDES_SOCIAIS = [
-  "https://www.instagram.com/admissaojardimamerica/",
-  "https://www.youtube.com/@admissaojardimamerica",
-  "https://www.facebook.com/admissaojardimamerica/",
-];
 
 // Schema.org "Church" para o Google entender nome, endereço, horários e redes
 export const jsonLdIgreja = {
@@ -72,8 +69,8 @@ export const jsonLdIgreja = {
     longitude: ENDERECO.lng,
   },
   areaServed: ["Jardim América", "Goiânia", "Goiás"],
-  sameAs: REDES_SOCIAIS,
-  // Horários da programação semanal (app/programacao/page.tsx)
+  sameAs: Object.values(REDES),
+  // Horários da programação semanal (lib/programacao.ts)
   openingHoursSpecification: [
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "08:30", closes: "11:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "18:00", closes: "20:30" },

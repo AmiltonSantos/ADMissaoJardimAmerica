@@ -1,4 +1,6 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import { REDES } from "@/lib/igreja";
+import { cultosSemana } from "@/lib/programacao";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,84 +11,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/programacao" },
 };
 
-// ─── Dados ────────────────────────────────────────────────────────────────────
+// Revalida a página a cada hora para tirar da lista os eventos que já passaram
+export const revalidate = 3600;
 
-const cultosSemana = [
-  {
-    dia: "Domingo",
-    diaCurto: "Dom",
-    cultos: [
-      {
-        horario: "08:30",
-        titulo: "EBD (Escola Bíblica Dominical)",
-        descricao: "Louvor, adoração e pregação da Palavra.",
-        cor: "bg-yellow-500",
-        corLight: "bg-yellow-50 dark:bg-yellow-900/20",
-        corTexto: "text-yellow-600 dark:text-yellow-400",
-        corBorda: "border-yellow-200 dark:border-yellow-800",
-        local: "Sede – Jardim América",
-      },
-      {
-        horario: "18:00",
-        titulo: "Culto da Noite",
-        descricao: "Momento de comunhão e edificação da fé.",
-        cor: "bg-blue-500",
-        corLight: "bg-blue-50 dark:bg-blue-900/20",
-        corTexto: "text-blue-600 dark:text-blue-400",
-        corBorda: "border-blue-200 dark:border-blue-800",
-        local: "Sede – Jardim América",
-      },
-    ],
-  },
-  {
-    dia: "Terça-feira",
-    diaCurto: "Ter",
-    cultos: [
-      {
-        horario: "19:30",
-        titulo: "Culto de Ensino",
-        descricao: "Intercessão, jejum e busca de Deus.",
-        cor: "bg-purple-500",
-        corLight: "bg-purple-50 dark:bg-purple-900/20",
-        corTexto: "text-purple-600 dark:text-purple-400",
-        corBorda: "border-purple-200 dark:border-purple-800",
-        local: "Sede – Jardim América",
-      },
-    ],
-  },
-  {
-    dia: "Quinta-feira",
-    diaCurto: "Qua",
-    cultos: [
-      {
-        horario: "19:30",
-        titulo: "Culto de Senhoras",
-        descricao: "Estudo aprofundado da Bíblia para crescimento espiritual.",
-        cor: "bg-green-500",
-        corLight: "bg-green-50 dark:bg-green-900/20",
-        corTexto: "text-green-600 dark:text-green-400",
-        corBorda: "border-green-200 dark:border-green-800",
-        local: "Sede – Jardim América",
-      },
-    ],
-  },
-  {
-    dia: "Sexta-feira",
-    diaCurto: "Sex",
-    cultos: [
-      {
-        horario: "19:30",
-        titulo: "Culto de Evangelismo",
-        descricao: "Proclamação do Evangelho com foco nos perdidos.",
-        cor: "bg-orange-500",
-        corLight: "bg-orange-50 dark:bg-orange-900/20",
-        corTexto: "text-orange-600 dark:text-orange-400",
-        corBorda: "border-orange-200 dark:border-orange-800",
-        local: "Sede – Jardim América",
-      },
-    ],
-  },
-];
+// ─── Dados ────────────────────────────────────────────────────────────────────
 
 type Categoria = "Usademig" | "Jovens" | "Mulheres" | "Homens" | "Família" | "Geral" | "Adote" | "Terça" | "Ebd";
 
@@ -212,6 +140,14 @@ const proximosEventos: {
   }
 ];
 
+const MESES = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
+
+// "AAAA-MM-DD" do evento, para comparar/ordenar como texto
+function dataEvento(e: { dia: string; mes: string; ano: string }) {
+  const mes = String(MESES.indexOf(e.mes) + 1).padStart(2, "0");
+  return `${e.ano}-${mes}-${e.dia.padStart(2, "0")}`;
+}
+
 // ─── Componentes ──────────────────────────────────────────────────────────────
 
 const IconeRelogio = () => (
@@ -230,6 +166,11 @@ const IconeLocal = () => (
 // ─── Página ───────────────────────────────────────────────────────────────────
 
 const ProgramacaoPage = () => {
+  const hoje = new Date().toLocaleDateString("en-CA", { timeZone: "America/Sao_Paulo" }); // AAAA-MM-DD
+  const eventos = proximosEventos
+    .filter((e) => dataEvento(e) >= hoje)
+    .sort((a, b) => dataEvento(a).localeCompare(dataEvento(b)));
+
   return (
     <>
       <Breadcrumb
@@ -310,8 +251,15 @@ const ProgramacaoPage = () => {
             </p>
           </div>
 
+          {eventos.length === 0 && (
+            <p className="mx-auto max-w-md rounded-2xl border border-body-color/10 bg-white p-8 text-center text-body-color dark:bg-dark">
+              Nenhum evento especial agendado no momento. Acompanhe nossas redes
+              sociais para novidades.
+            </p>
+          )}
+
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {proximosEventos.map((evento) => (
+            {eventos.map((evento) => (
               <div
                 key={evento.id}
                 className="group flex overflow-hidden rounded-2xl border border-body-color/10 bg-white shadow-sm transition-shadow hover:shadow-md dark:bg-dark"
@@ -376,7 +324,7 @@ const ProgramacaoPage = () => {
               </div>
               <div className="flex flex-shrink-0 flex-wrap gap-3">
                 <a
-                  href="https://www.instagram.com/admissaojardimamerica/"
+                  href={REDES.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-primary transition hover:bg-white/90"
@@ -384,7 +332,7 @@ const ProgramacaoPage = () => {
                   Instagram
                 </a>
                 <a
-                  href="https://www.youtube.com/@admissaojardimamerica"
+                  href={REDES.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-xl border-2 border-white px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"

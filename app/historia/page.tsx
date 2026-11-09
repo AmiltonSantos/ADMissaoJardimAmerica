@@ -1,6 +1,8 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import Image from "next/image";
+import { congregacoes } from "@/lib/congregacoes";
 import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   // Foco: Assembleia de Deus Ministério Missão
@@ -117,7 +119,7 @@ const crencas = [
 
 const numeros = [
   { valor: "1911", label: "Fundação da AD no Brasil" },
-  { valor: "40", label: "Congregações ativas" },
+  { valor: String(congregacoes.length), label: "Congregações ativas" },
   { valor: "+100", label: "Anos de história em Goiás" },
   { valor: "15M+", label: "Membros no Brasil" },
 ];
@@ -391,18 +393,18 @@ export default function SobrePage() {
               Jardim América. Nossa porta está sempre aberta.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
+              <Link
                 href="/location"
                 className="rounded-xl bg-white px-7 py-3 text-sm font-semibold text-primary transition hover:bg-white/90"
               >
                 Como Chegar
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/programacao"
                 className="rounded-xl border-2 border-white px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
               >
                 Ver Programação
-              </a>
+              </Link>
             </div>
           </div>
         </div>

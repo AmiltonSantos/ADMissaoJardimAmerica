@@ -1,14 +1,14 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { REDES } from "@/lib/igreja";
+
+const linkSocial =
+  "dark:text-body-color-dark mr-6 text-body-color duration-300 hover:text-primary dark:hover:text-primary";
 
 const Footer = () => {
   return (
     <>
-      <footer
-        className="wow fadeInUp dark:bg-gray-dark relative z-10 bg-white pt-16 md:pt-20 lg:pt-24"
-        data-wow-delay=".1s"
-      >
+      <footer className="dark:bg-gray-dark relative z-10 bg-white pt-16 md:pt-20 lg:pt-24">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
@@ -34,9 +34,11 @@ const Footer = () => {
                 </p>
                 <div className="flex items-center">
                   <a
-                    href="https://www.facebook.com/admissaojardimamerica/?locale=pt_BR"
-                    aria-label="social-link"
-                    className="dark:text-body-color-dark mr-6 text-body-color duration-300 hover:text-primary dark:hover:text-primary"
+                    href={REDES.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className={linkSocial}
                   >
                     <svg
                       width="9"
@@ -48,10 +50,12 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="https://www.instagram.com/admissaojardimamerica/"
-                    aria-label="social-link"
-                    className="dark:text-body-color-dark mr-6 text-body-color duration-300 hover:text-primary dark:hover:text-primary"
-                  >                    
+                    href={REDES.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className={linkSocial}
+                  >
                     <svg
                       width={18}
                       height={18}
@@ -68,9 +72,11 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="https://www.youtube.com/@admissaojardimamerica"
-                    aria-label="social-link"
-                    className="dark:text-body-color-dark mr-6 text-body-color duration-300 hover:text-primary dark:hover:text-primary"
+                    href={REDES.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    className={linkSocial}
                   >
                     <svg
                       width="18"
@@ -89,8 +95,8 @@ const Footer = () => {
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
           <div className="py-8">
             <p className="text-center text-base text-body-color dark:text-white">
-              Assembleia de Deus Missão Jardim América,
-               Todos os direitos reservados - 2026
+              Assembleia de Deus Missão Jardim América. Todos os direitos
+              reservados - {new Date().getFullYear()}
             </p>
           </div>
         </div>
