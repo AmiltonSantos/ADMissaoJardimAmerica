@@ -33,7 +33,7 @@ export default function BioPage() {
             priority
             className="h-28 w-28 rounded-full object-cover"
           />
-          <h1 className="text-3xl font-bold sm:text-4xl">AD MISSÃO JARDIM AMÉRICA</h1>
+          <h1 className="text-3xl font-bold sm:text-4xl">ASSEMBLEIA DE DEUS MISSÃO JARDIM AMÉRICA</h1>
           <p className="whitespace-pre-line text-base leading-relaxed text-white/80">
             A Assembleia de Deus Ministério Missão Jardim América é fundamentada na Palavra de Deus, na ação do
             Espírito Santo e na vida de santidade.{"\n"}Valorizamos a oração, o ensino bíblico fiel, a comunhão e
