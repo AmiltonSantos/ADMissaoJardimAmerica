@@ -1,4 +1,4 @@
-import Blog from "@/components/Blog";
+import Youtube from "@/components/Youtube";
 import HomeHero from "@/components/Home/HomeHero";
 import Institucional from "@/components/Home/Institucional";
 import MissoesCarrossel from "@/components/Home/MissoesCarrossel";
@@ -24,10 +24,10 @@ export default function Home() {
       <SplashWrapper />
       {/* Layout inspirado em adbelem.org.br */}
       <HomeHero />
-      <MissoesCarrossel />
-      <Institucional />
-      <Blog />
       <Cultos />
+      <MissoesCarrossel />
+      <Youtube />
+      <Institucional />
       <Doacao />
     </>
   );

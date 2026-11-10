@@ -23,7 +23,7 @@ const SkeletonCard = () => (
   </div>
 );
 
-const Video = () => {
+const Youtube = () => {
   const [videos, setVideos] = useState<VideoItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [isOpen, setOpen] = useState(false);
@@ -100,4 +100,4 @@ const Video = () => {
   );
 };
 
-export default Video;
+export default Youtube;
